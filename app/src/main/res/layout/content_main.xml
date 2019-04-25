@@ -66,10 +66,15 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_gravity="center"
         android:clickable="true"
-        app:srcCompat="@drawable/cs125"
-        tools:layout_editor_absoluteX="240dp"
-        tools:layout_editor_absoluteY="603dp" />
+        android:src="@drawable/cs125"
+        app:fabCustomSize="112dp"
+        app:fabSize="auto"
+        app:maxImageSize="84dp"
+        app:backgroundTint="@color/design_default_color_primary_dark"
+        tools:layout_editor_absoluteX="278dp"
+        tools:layout_editor_absoluteY="608dp" />
 </android.support.constraint.ConstraintLayout>
