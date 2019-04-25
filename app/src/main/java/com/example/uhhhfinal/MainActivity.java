@@ -15,11 +15,14 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+
 public class MainActivity extends AppCompatActivity {
-    public Long geoffCount = 0L;
-    public String geocounter = geoffCount + " geoffs";
+    public static class GlobalVars {
+        public static Long globalChallen = 0L;
+        public static boolean globalStarted = false;
+    }
+    public String geocounter = GlobalVars.globalChallen + " geoffs";
     public String startUpText = "What are you waiting for? Touch him!";
-    private boolean started = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +32,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         */
-        //String startUpText = "What are you waiting for? Touch him!";
 
         ImageButton button = (ImageButton) findViewById(R.id.geoff);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                started = true;
+                GlobalVars.globalStarted = true;
                 clickGeoff();
             }
         });
@@ -49,15 +51,34 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        geocounter = GlobalVars.globalChallen + " geoffs";
+
+        TextView startUp = (TextView) findViewById(R.id.startUp);
+        TextView counter = (TextView) findViewById(R.id.counnt);
+        startUp.setText(startUpText);
+        counter.setText(geocounter);
+        if (GlobalVars.globalStarted) {
+            startUp.setVisibility(View.GONE);
+            counter.setVisibility(View.VISIBLE);
+        } else {
+            counter.setVisibility(View.GONE);
+        }
+    }
+
     public void clickGeoff() {
         TextView counter = (TextView) findViewById(R.id.counnt);
-        geoffCount++;
-        geocounter = geoffCount + " geoffs";
+        GlobalVars.globalChallen++;
+        geocounter = GlobalVars.globalChallen + " geoffs";
+
         counter.setText(geocounter);
         TextView startUp = (TextView) findViewById(R.id.startUp);
         startUp.setText(startUpText);
         counter.setVisibility(View.VISIBLE);
-        if (started) {
+        if (GlobalVars.globalStarted) {
             startUp.setVisibility(View.GONE);
         }
     }
@@ -66,22 +87,23 @@ public class MainActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putLong("geoffsOnExit", geoffCount);
-        outState.putBoolean("firstTimer", started);
+        outState.putLong("geoffsOnExit", GlobalVars.globalChallen);
+        outState.putBoolean("firstTimer", GlobalVars.globalStarted);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        geoffCount = savedInstanceState.getLong("geoffsOnExit");
-        geocounter = geoffCount + " geoffs";
-        started = savedInstanceState.getBoolean("firstTimer");
+        GlobalVars.globalChallen = savedInstanceState.getLong("geoffsOnExit");
+        geocounter = GlobalVars.globalChallen + " geoffs";
+
+        GlobalVars.globalStarted = savedInstanceState.getBoolean("firstTimer");
         TextView startUp = (TextView) findViewById(R.id.startUp);
         TextView counter = (TextView) findViewById(R.id.counnt);
         startUp.setText(startUpText);
         counter.setText(geocounter);
-        if (started) {
+        if (GlobalVars.globalStarted) {
             startUp.setVisibility(View.GONE);
             counter.setVisibility(View.VISIBLE);
         } else {
