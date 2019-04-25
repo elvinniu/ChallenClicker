@@ -73,7 +73,7 @@
         android:src="@drawable/cs125"
         app:fabCustomSize="112dp"
         app:fabSize="auto"
-        app:maxImageSize="84dp"
+        app:maxImageSize="76dp"
         app:backgroundTint="@color/design_default_color_primary_dark"
         tools:layout_editor_absoluteX="278dp"
         tools:layout_editor_absoluteY="608dp" />
