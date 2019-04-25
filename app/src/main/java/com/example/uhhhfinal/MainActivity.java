@@ -1,5 +1,6 @@
 package com.example.uhhhfinal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /*
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        */
         //String startUpText = "What are you waiting for? Touch him!";
 
         ImageButton button = (ImageButton) findViewById(R.id.geoff);
@@ -36,16 +38,15 @@ public class MainActivity extends AppCompatActivity {
                 clickGeoff();
             }
         });
-        /*
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+
+        FloatingActionButton menu = findViewById(R.id.menuButton);
+        menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(MainActivity.this, MenuActivity.class));
             }
         });
-        */
+
     }
 
     public void clickGeoff() {
@@ -59,6 +60,32 @@ public class MainActivity extends AppCompatActivity {
             startUp.setVisibility(View.GONE);
         }
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putLong("geoffsOnExit", geoffCount);
+        outState.putBoolean("firstTimer", started);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        geoffCount = savedInstanceState.getLong("geoffsOnExit");
+        geocounter = geoffCount + " geoffs";
+        started = savedInstanceState.getBoolean("firstTimer");
+        TextView startUp = (TextView) findViewById(R.id.startUp);
+        TextView counter = (TextView) findViewById(R.id.counnt);
+        startUp.setText(startUpText);
+        counter.setText(geocounter);
+        if (started) {
+            startUp.setVisibility(View.GONE);
+            counter.setVisibility(View.VISIBLE);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
