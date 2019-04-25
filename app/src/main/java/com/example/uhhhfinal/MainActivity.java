@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 clickGeoff();
             }
         });
-
+        /*
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        */
     }
 
     public void clickGeoff() {
