@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     public String geocounter = geoffCount + " geoffs";
     public String startUpText = "What are you waiting for? Touch him!";
     private boolean started = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         //setSupportActionBar(toolbar);
 
         //String startUpText = "What are you waiting for? Touch him!";
-
         ImageButton button = (ImageButton) findViewById(R.id.geoff);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -37,9 +35,6 @@ public class MainActivity extends AppCompatActivity {
                 clickGeoff();
             }
         });
-        if (savedInstanceState != null) {
-            geoffCount = savedInstanceState.getLong("geoffsOnExit");
-        }
         /*
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -65,10 +60,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
 
         outState.putLong("geoffsOnExit", geoffCount);
+        outState.putBoolean("firstTimer", started);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        geoffCount = savedInstanceState.getLong("geoffsOnExit");
+        geocounter = geoffCount + " geoffs";
+        started = savedInstanceState.getBoolean("firstTimer");
+        TextView startUp = (TextView) findViewById(R.id.startUp);
+        TextView counter = (TextView) findViewById(R.id.counnt);
+        startUp.setText(startUpText);
+        counter.setText(geocounter);
+        if (started) {
+            startUp.setVisibility(View.GONE);
+            counter.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
