@@ -33,10 +33,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         */
+        final MediaPlayer geoffWelcome = MediaPlayer.create(this, R.raw.geoffsoundwelcome);
 
         ImageButton button = (ImageButton) findViewById(R.id.geoff);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                if (!GlobalVars.globalStarted) {
+                    geoffWelcome.start();
+                }
                 GlobalVars.globalStarted = true;
                 clickGeoff();
             }
@@ -81,9 +85,6 @@ public class MainActivity extends AppCompatActivity {
         counter.setVisibility(View.VISIBLE);
         if (GlobalVars.globalStarted) {
             startUp.setVisibility(View.GONE);
-        } else {
-            final MediaPlayer geoffWelcome = MediaPlayer.create(this, R.raw.geoffsoundwelcome);
-            geoffWelcome.start();
         }
     }
 
