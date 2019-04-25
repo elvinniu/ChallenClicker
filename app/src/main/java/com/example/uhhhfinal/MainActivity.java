@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         counter.setText(geocounter);
         TextView startUp = (TextView) findViewById(R.id.startUp);
         startUp.setText(startUpText);
+        counter.setVisibility(View.VISIBLE);
         if (started) {
             startUp.setVisibility(View.GONE);
         }
@@ -83,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         if (started) {
             startUp.setVisibility(View.GONE);
             counter.setVisibility(View.VISIBLE);
+        } else {
+            counter.setVisibility(View.GONE);
         }
     }
 
