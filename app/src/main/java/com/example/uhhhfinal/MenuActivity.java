@@ -16,8 +16,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class MenuActivity extends AppCompatActivity {
-    public Long geoffCount = 0L;
-    public String geocounter = geoffCount + " geoffs";
+    public String geoffCounter = MainActivity.GlobalVars.globalChallen + "";
     public String startUpText = "What are you waiting for? Touch him!";
     private boolean started = false;
 
@@ -39,6 +38,9 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
         */
+        TextView currentGeoffs = findViewById(R.id.currency);
+        currentGeoffs.setText(geoffCounter);
+
         FloatingActionButton back = findViewById(R.id.backButton);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
