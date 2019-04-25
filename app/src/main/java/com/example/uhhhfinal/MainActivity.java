@@ -1,6 +1,7 @@
 package com.example.uhhhfinal;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -24,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         //String startUpText = "What are you waiting for? Touch him!";
 
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
                 clickGeoff();
             }
         });
+        if (savedInstanceState != null) {
+            geoffCount = savedInstanceState.getLong("geoffsOnExit");
+        }
         /*
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
             startUp.setVisibility(View.GONE);
         }
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+
+        outState.putLong("geoffsOnExit", geoffCount);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
