@@ -21,7 +21,7 @@ import org.w3c.dom.Text;
 
 import java.util.TimerTask;
 
-public class MenuActivity extends AppCompatActivity {
+public class LaptopActivity extends AppCompatActivity {
     public String geoffCounter = MainActivity.GlobalVars.globalChallen + "";
     public String startUpText = "What are you waiting for? Touch him!";
     private boolean started = false;
@@ -29,7 +29,7 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_layout);
+        setContentView(R.layout.laptop_layout);
         /*
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,19 +51,10 @@ public class MenuActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, MainActivity.class));
-            }
-        });
-        FloatingActionButton laptop = findViewById(R.id.laptopPage);
-        laptop.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.laptop));
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, LaptopActivity.class));
                 changeIcon();
+                startActivity(new Intent(LaptopActivity.this, MenuActivity.class));
             }
         });
-
 
     }
 

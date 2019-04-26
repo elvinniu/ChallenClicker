@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!GlobalVars.globalStarted) {
                     geoffWelcome.start();
+                    GlobalVars.globalStarted = true;
                 }
-                GlobalVars.globalStarted = true;
                 clickGeoff();
             }
         });
