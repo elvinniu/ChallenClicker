@@ -21,17 +21,17 @@ import org.w3c.dom.Text;
 
 import java.util.TimerTask;
 
-public class LaptopActivity extends AppCompatActivity {
+public class StudentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.laptop_layout);
+        setContentView(R.layout.student_layout);
 
         FloatingActionButton back = findViewById(R.id.backButton);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LaptopActivity.this, MenuActivity.class));
+                startActivity(new Intent(StudentActivity.this, MenuActivity.class));
             }
         });
 

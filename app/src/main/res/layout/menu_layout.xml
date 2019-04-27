@@ -76,14 +76,16 @@
         android:layout_height="112dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:clickable="true"
+        android:src="@drawable/laptop"
         app:backgroundTint="@android:color/holo_orange_dark"
         app:fabCustomSize="112dp"
         app:fabSize="auto"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.865"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:maxImageSize="96dp" />
@@ -103,6 +105,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="96dp"
         app:srcCompat="@drawable/question_mark" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/studentPage"
+        android:layout_width="98dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="188dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/background"
+        app:srcCompat="@drawable/default_student" />
 
 
 </android.support.constraint.ConstraintLayout>

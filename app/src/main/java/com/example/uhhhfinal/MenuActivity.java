@@ -30,20 +30,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
-        /*
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        //String startUpText = "What are you waiting for? Touch him!";
-
-        ImageButton button = (ImageButton) findViewById(R.id.geoff);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                started = true;
-                clickGeoff();
-            }
-        });
-        */
         TextView currentGeoffs = findViewById(R.id.currency);
         currentGeoffs.setText(geoffCounter);
 
@@ -54,13 +41,20 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(new Intent(MenuActivity.this, MainActivity.class));
             }
         });
+
         FloatingActionButton laptop = findViewById(R.id.laptopPage);
-        laptop.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.laptop));
-        back.setOnClickListener(new View.OnClickListener() {
+        laptop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MenuActivity.this, LaptopActivity.class));
-                changeIcon();
+            }
+        });
+
+        FloatingActionButton student = findViewById(R.id.studentPage);
+        student.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MenuActivity.this, StudentActivity.class));
             }
         });
 
