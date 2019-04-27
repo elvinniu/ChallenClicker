@@ -1,6 +1,7 @@
 package com.example.uhhhfinal;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +24,15 @@ import java.util.TimerTask;
 
 public class StudentActivity extends AppCompatActivity {
     public String geoffCounter = MainActivity.GlobalVars.globalChallen + "";
+    private Long price = 6L;
+    private Long priceten = Math.round(price * 20.303718238);
+    private Long pricehundred = Math.round(price * 7828749.671335256);
+
+    protected void updatePrice() {
+        price = Math.round(6*(Math.pow(1.15, MainActivity.GlobalVars.numStudents)));
+        priceten = Math.round(price * 20.303718238);
+        pricehundred = Math.round(price * 7828749.671335256);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +47,54 @@ public class StudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(StudentActivity.this, MenuActivity.class));
+            }
+        });
+
+        Button buyone = findViewById(R.id.plus1);
+        buyone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println(price);
+                if (MainActivity.GlobalVars.globalChallen >= price) {
+                    MainActivity.GlobalVars.globalChallen -= price;
+                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                    editor.putLong("students", MainActivity.GlobalVars.numStudents);
+                    editor.apply();
+                    MainActivity.GlobalVars.numStudents++;
+                }
+                TextView currentGeoffs = findViewById(R.id.currency);
+                geoffCounter = MainActivity.GlobalVars.globalChallen + "";
+                currentGeoffs.setText(geoffCounter);
+                updatePrice();
+            }
+        });
+
+        Button buyten = findViewById(R.id.plus10);
+        buyten.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (MainActivity.GlobalVars.globalChallen >= priceten) {
+                    MainActivity.GlobalVars.globalChallen -= priceten;
+                    MainActivity.GlobalVars.numStudents += 10;
+                }
+                TextView currentGeoffs = findViewById(R.id.currency);
+                currentGeoffs.setText(geoffCounter);
+                updatePrice();
+            }
+        });
+
+        Button buyhundred = findViewById(R.id.plus100);
+        buyhundred.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (MainActivity.GlobalVars.globalChallen >= pricehundred) {
+                    MainActivity.GlobalVars.globalChallen -= pricehundred;
+                    MainActivity.GlobalVars.numStudents += 100;
+                }
+                TextView currentGeoffs = findViewById(R.id.currency);
+                currentGeoffs.setText(geoffCounter);
+                updatePrice();
             }
         });
 

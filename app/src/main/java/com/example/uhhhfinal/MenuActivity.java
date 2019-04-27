@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Set;
 import java.util.TimerTask;
 
 public class MenuActivity extends AppCompatActivity {
@@ -72,6 +73,13 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton settings = findViewById(R.id.settings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MenuActivity.this, SettingsActivity.class));
+            }
+        });
 
     }
 

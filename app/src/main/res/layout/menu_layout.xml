@@ -150,5 +150,19 @@
         app:layout_constraintTop_toBottomOf="@+id/laptopPage"
         app:maxImageSize="86dp" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:maxImageSize="42dp"
+        app:backgroundTint="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/gearyboi" />
+
 
 </android.support.constraint.ConstraintLayout>

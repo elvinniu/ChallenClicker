@@ -23,10 +23,14 @@ public class MainActivity extends AppCompatActivity {
     public static class GlobalVars {
         public static Long globalChallen;
         public static boolean globalStarted;
+        public static Long numStudents;
+        public static Long numLaptops;
+        public static Long numTutors;
+        public static Long numProgrammers;
+        public static SharedPreferences pref;
     }
     public String geocounter = GlobalVars.globalChallen + " geoffs";
     public String startUpText = "What are you waiting for? Touch him!";
-    private SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-        GlobalVars.globalChallen = pref.getLong("challens", 0L);
+        GlobalVars.pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+        GlobalVars.globalChallen = GlobalVars.pref.getLong("challens", 0L);
 
         geocounter = GlobalVars.globalChallen + " geoffs";
 
@@ -92,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         if (GlobalVars.globalStarted) {
             startUp.setVisibility(View.GONE);
         }
-        SharedPreferences.Editor editor = pref.edit();
+        SharedPreferences.Editor editor = GlobalVars.pref.edit();
         editor.putLong("challens", GlobalVars.globalChallen);
         editor.apply();
     }
