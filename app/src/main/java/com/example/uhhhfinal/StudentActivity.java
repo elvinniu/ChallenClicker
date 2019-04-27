@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Timer;
 import java.util.TimerTask;
 
 public class StudentActivity extends AppCompatActivity {
@@ -57,10 +58,11 @@ public class StudentActivity extends AppCompatActivity {
                 System.out.println(price);
                 if (MainActivity.GlobalVars.globalChallen >= price) {
                     MainActivity.GlobalVars.globalChallen -= price;
-                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
-                    editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
-                    editor.putLong("students", MainActivity.GlobalVars.numStudents);
-                    editor.apply();
+                    //SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    //editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                    //editor.putLong("students", MainActivity.GlobalVars.numStudents);
+                    //editor.apply();
+                    updateSecond();
                     MainActivity.GlobalVars.numStudents++;
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
@@ -97,31 +99,30 @@ public class StudentActivity extends AppCompatActivity {
                 updatePrice();
             }
         });
-
     }
 
-    long startTime = 0;
-
-    //runs without a timer by reposting this handler at the end of the runnable
-    Handler timerHandler = new Handler();
-    Runnable timerRunnable = new Runnable() {
-
-        @Override
-        public void run() {
-            long millis = System.currentTimeMillis() - startTime;
-            int seconds = (int) (millis / 1000);
-            int minutes = seconds / 60;
-            seconds = seconds % 60;
-            /*
-            FloatingActionButton laptop = findViewById(R.id.laptopPage);
-            if (MainActivity.GlobalVars.globalChallen >= 10) {
-                laptop.setBackgroundResource(R.drawable.question_mark);
-                laptop.setBackgroundColor(Color.WHITE);
+    public void updateSecond() {
+        final Handler handler = new Handler();
+        Timer timer = new Timer(false);
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                        MainActivity.GlobalVars.globalChallen += MainActivity.GlobalVars.numStudents;
+                        editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                        editor.apply();
+                        TextView counter = (TextView) findViewById(R.id.currency);
+                        geoffCounter = MainActivity.GlobalVars.globalChallen + "";
+                        counter.setText(geoffCounter);
+                    }
+                });
             }
-*/
-            timerHandler.postDelayed(this, 500);
-        }
-    };
+        };
+        timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

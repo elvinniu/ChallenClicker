@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -67,8 +71,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        final Handler handler = new Handler();
+        Timer timer = new Timer(false);
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView counter = (TextView) findViewById(R.id.counnt);
+                        counter.setText(geocounter);
+                    }
+                });
+            }
+        };
+        timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
+
         GlobalVars.pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         GlobalVars.globalChallen = GlobalVars.pref.getLong("challens", 0L);
+        GlobalVars.numStudents = GlobalVars.pref.getLong("students", 0L);
 
         geocounter = GlobalVars.globalChallen + " geoffs";
 

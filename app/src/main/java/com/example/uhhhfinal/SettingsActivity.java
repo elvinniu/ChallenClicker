@@ -26,7 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.student_layout);
+        setContentView(R.layout.settings_layout);
 
         FloatingActionButton back = findViewById(R.id.backButton);
         back.setOnClickListener(new View.OnClickListener() {
@@ -36,15 +36,18 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        Button reset = findViewById(R.id.resetbut);
+        Button reset = findViewById(R.id.resetbutton);
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MainActivity.GlobalVars.globalChallen = 0L;
                 MainActivity.GlobalVars.numStudents = 0L;
+                SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                editor.putLong("students", MainActivity.GlobalVars.numStudents);
+                editor.apply();
             }
         });
-
     }
 
     @Override
