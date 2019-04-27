@@ -19,16 +19,15 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-import java.util.Set;
 import java.util.TimerTask;
 
-public class MenuActivity extends AppCompatActivity {
+public class BenActivity extends AppCompatActivity {
     public String geoffCounter = MainActivity.GlobalVars.globalChallen + "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_layout);
+        setContentView(R.layout.student_layout);
 
         TextView currentGeoffs = findViewById(R.id.currency);
         currentGeoffs.setText(geoffCounter);
@@ -37,55 +36,10 @@ public class MenuActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, MainActivity.class));
+                startActivity(new Intent(BenActivity.this, MenuActivity.class));
             }
         });
 
-        FloatingActionButton laptop = findViewById(R.id.laptopPage);
-        laptop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, LaptopActivity.class));
-            }
-        });
-
-        FloatingActionButton student = findViewById(R.id.studentPage);
-        student.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, StudentActivity.class));
-            }
-        });
-
-        FloatingActionButton tutor = findViewById(R.id.tutorPage);
-        tutor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, TutorActivity.class));
-            }
-        });
-
-        FloatingActionButton programmer = findViewById(R.id.programmerPage);
-        programmer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, ProgrammerActivity.class));
-            }
-        });
-
-        FloatingActionButton settings = findViewById(R.id.settings);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, SettingsActivity.class));
-            }
-        });
-
-    }
-
-    public void changeIcon() {
-        FloatingActionButton laptop = findViewById(R.id.laptopPage);
-        laptop.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.question_mark));
     }
 
     long startTime = 0;
