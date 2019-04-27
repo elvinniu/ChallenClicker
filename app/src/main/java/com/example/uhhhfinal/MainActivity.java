@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, MenuActivity.class));
             }
         });
+
     }
 
     public void updateSecond() {
@@ -76,18 +77,26 @@ public class MainActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
-                        MainActivity.GlobalVars.globalChallen += MainActivity.GlobalVars.numStudents;
-                        editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                        SharedPreferences.Editor editor = GlobalVars.pref.edit();
+                        GlobalVars.globalChallen += GlobalVars.numStudents;
+                        editor.putLong("challens", GlobalVars.globalChallen);
+                        editor.putLong("students", GlobalVars.numStudents);
                         editor.apply();
-                        TextView counter = (TextView) findViewById(R.id.counnt);
-                        geocounter = GlobalVars.globalChallen + " geoffs";
-                        counter.setText(geocounter);
+                        updateText();
+                        System.out.println("challelesln: " + GlobalVars.globalChallen);
+                        System.out.println("main: " + GlobalVars.numStudents);
+                        updateText();
                     }
                 });
             }
         };
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
+    }
+
+    public void updateText() {
+        TextView counter = (TextView) findViewById(R.id.counnt);
+        geocounter = GlobalVars.globalChallen + " geoffs";
+        counter.setText(geocounter);
     }
 
     @Override
@@ -98,20 +107,22 @@ public class MainActivity extends AppCompatActivity {
         GlobalVars.globalChallen = GlobalVars.pref.getLong("challens", 0L);
         GlobalVars.numStudents = GlobalVars.pref.getLong("students", 0L);
 
-        geocounter = GlobalVars.globalChallen + " geoffs";
+        //geocounter = GlobalVars.globalChallen + " geoffs";
 
         TextView startUp = (TextView) findViewById(R.id.startUp);
         TextView counter = (TextView) findViewById(R.id.counnt);
         startUp.setText(startUpText);
-        counter.setText(geocounter);
+        //counter.setText(geocounter);
+        updateText();
         if (GlobalVars.globalStarted) {
             startUp.setVisibility(View.GONE);
             counter.setVisibility(View.VISIBLE);
         } else {
             counter.setVisibility(View.GONE);
         }
-        updateSecond();
-
+        if (!GlobalVars.globalStarted) {
+            updateSecond();
+        }
     }
 
     public void clickGeoff() {

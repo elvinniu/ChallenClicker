@@ -88,29 +88,6 @@ public class MenuActivity extends AppCompatActivity {
         laptop.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.question_mark));
     }
 
-    long startTime = 0;
-
-    //runs without a timer by reposting this handler at the end of the runnable
-    Handler timerHandler = new Handler();
-    Runnable timerRunnable = new Runnable() {
-
-        @Override
-        public void run() {
-            long millis = System.currentTimeMillis() - startTime;
-            int seconds = (int) (millis / 1000);
-            int minutes = seconds / 60;
-            seconds = seconds % 60;
-            /*
-            FloatingActionButton laptop = findViewById(R.id.laptopPage);
-            if (MainActivity.GlobalVars.globalChallen >= 10) {
-                laptop.setBackgroundResource(R.drawable.question_mark);
-                laptop.setBackgroundColor(Color.WHITE);
-            }
-*/
-            timerHandler.postDelayed(this, 500);
-        }
-    };
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -58,10 +58,10 @@ public class StudentActivity extends AppCompatActivity {
                 System.out.println(price);
                 if (MainActivity.GlobalVars.globalChallen >= price) {
                     MainActivity.GlobalVars.globalChallen -= price;
-                    //SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
-                    //editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
-                    //editor.putLong("students", MainActivity.GlobalVars.numStudents);
-                    //editor.apply();
+                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                    editor.putLong("students", MainActivity.GlobalVars.numStudents);
+                    editor.apply();
                     MainActivity.GlobalVars.numStudents++;
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
@@ -77,6 +77,10 @@ public class StudentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (MainActivity.GlobalVars.globalChallen >= priceten) {
                     MainActivity.GlobalVars.globalChallen -= priceten;
+                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                    editor.putLong("students", MainActivity.GlobalVars.numStudents);
+                    editor.apply();
                     MainActivity.GlobalVars.numStudents += 10;
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
@@ -91,6 +95,10 @@ public class StudentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (MainActivity.GlobalVars.globalChallen >= pricehundred) {
                     MainActivity.GlobalVars.globalChallen -= pricehundred;
+                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                    editor.putLong("students", MainActivity.GlobalVars.numStudents);
+                    editor.apply();
                     MainActivity.GlobalVars.numStudents += 100;
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
@@ -100,29 +108,6 @@ public class StudentActivity extends AppCompatActivity {
         });
     }
 
-    public void updateSecond() {
-        final Handler handler = new Handler();
-        Timer timer = new Timer(false);
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
-                        MainActivity.GlobalVars.globalChallen += MainActivity.GlobalVars.numStudents;
-                        editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
-                        editor.apply();
-                        TextView counter = (TextView) findViewById(R.id.currency);
-                        geoffCounter = MainActivity.GlobalVars.globalChallen + "";
-                        counter.setText(geoffCounter);
-                    }
-                });
-            }
-        };
-        timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -130,7 +115,7 @@ public class StudentActivity extends AppCompatActivity {
         MainActivity.GlobalVars.globalChallen = MainActivity.GlobalVars.pref.getLong("challens", 0L);
         MainActivity.GlobalVars.numStudents = MainActivity.GlobalVars.pref.getLong("students", 0L);
         geoffCounter = MainActivity.GlobalVars.globalChallen + "";
-        updateSecond();
+        //updateSecond();
     }
 
     @Override
