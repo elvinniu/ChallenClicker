@@ -1,6 +1,8 @@
 package com.example.uhhhfinal;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -19,20 +21,22 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     public static class GlobalVars {
-        public static Long globalChallen = 0L;
-        public static boolean globalStarted = false;
+        public static Long globalChallen;
+        public static boolean globalStarted;
     }
     public String geocounter = GlobalVars.globalChallen + " geoffs";
     public String startUpText = "What are you waiting for? Touch him!";
+    private SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        */
+        if (!GlobalVars.globalStarted) {
+            GlobalVars.globalChallen = 0L;
+            GlobalVars.globalStarted = false;
+        }
+
         final MediaPlayer geoffWelcome = MediaPlayer.create(this, R.raw.geoffsoundwelcome);
 
         ImageButton button = (ImageButton) findViewById(R.id.geoff);
@@ -53,12 +57,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, MenuActivity.class));
             }
         });
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+        GlobalVars.globalChallen = pref.getLong("challens", 0L);
 
         geocounter = GlobalVars.globalChallen + " geoffs";
 
@@ -86,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
         if (GlobalVars.globalStarted) {
             startUp.setVisibility(View.GONE);
         }
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putLong("challens", GlobalVars.globalChallen);
+        editor.apply();
     }
 
     @Override
