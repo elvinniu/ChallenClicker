@@ -67,10 +67,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
+    public void updateSecond() {
         final Handler handler = new Handler();
         Timer timer = new Timer(false);
         TimerTask timerTask = new TimerTask() {
@@ -79,13 +76,23 @@ public class MainActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
+                        SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                        MainActivity.GlobalVars.globalChallen += MainActivity.GlobalVars.numStudents;
+                        editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                        editor.apply();
                         TextView counter = (TextView) findViewById(R.id.counnt);
+                        geocounter = GlobalVars.globalChallen + " geoffs";
                         counter.setText(geocounter);
                     }
                 });
             }
         };
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         GlobalVars.pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         GlobalVars.globalChallen = GlobalVars.pref.getLong("challens", 0L);
@@ -103,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             counter.setVisibility(View.GONE);
         }
+        updateSecond();
+
     }
 
     public void clickGeoff() {

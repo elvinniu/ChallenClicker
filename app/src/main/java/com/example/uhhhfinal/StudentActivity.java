@@ -62,7 +62,6 @@ public class StudentActivity extends AppCompatActivity {
                     //editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
                     //editor.putLong("students", MainActivity.GlobalVars.numStudents);
                     //editor.apply();
-                    updateSecond();
                     MainActivity.GlobalVars.numStudents++;
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
@@ -122,6 +121,16 @@ public class StudentActivity extends AppCompatActivity {
             }
         };
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.GlobalVars.pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+        MainActivity.GlobalVars.globalChallen = MainActivity.GlobalVars.pref.getLong("challens", 0L);
+        MainActivity.GlobalVars.numStudents = MainActivity.GlobalVars.pref.getLong("students", 0L);
+        geoffCounter = MainActivity.GlobalVars.globalChallen + "";
+        updateSecond();
     }
 
     @Override
