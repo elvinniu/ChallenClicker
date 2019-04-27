@@ -22,10 +22,15 @@ import org.w3c.dom.Text;
 import java.util.TimerTask;
 
 public class StudentActivity extends AppCompatActivity {
+    public String geoffCounter = MainActivity.GlobalVars.globalChallen + "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_layout);
+
+        TextView currentGeoffs = findViewById(R.id.currency);
+        currentGeoffs.setText(geoffCounter);
 
         FloatingActionButton back = findViewById(R.id.backButton);
         back.setOnClickListener(new View.OnClickListener() {

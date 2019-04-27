@@ -23,8 +23,6 @@ import java.util.TimerTask;
 
 public class MenuActivity extends AppCompatActivity {
     public String geoffCounter = MainActivity.GlobalVars.globalChallen + "";
-    public String startUpText = "What are you waiting for? Touch him!";
-    private boolean started = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +53,22 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MenuActivity.this, StudentActivity.class));
+            }
+        });
+
+        FloatingActionButton tutor = findViewById(R.id.tutorPage);
+        tutor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MenuActivity.this, TutorActivity.class));
+            }
+        });
+
+        FloatingActionButton programmer = findViewById(R.id.programmerPage);
+        programmer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MenuActivity.this, ProgrammerActivity.class));
             }
         });
 

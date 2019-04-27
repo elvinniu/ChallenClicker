@@ -21,13 +21,13 @@ import org.w3c.dom.Text;
 
 import java.util.TimerTask;
 
-public class LaptopActivity extends AppCompatActivity {
+public class BenActivity extends AppCompatActivity {
     public String geoffCounter = MainActivity.GlobalVars.globalChallen + "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.laptop_layout);
+        setContentView(R.layout.student_layout);
 
         TextView currentGeoffs = findViewById(R.id.currency);
         currentGeoffs.setText(geoffCounter);
@@ -36,7 +36,7 @@ public class LaptopActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LaptopActivity.this, MenuActivity.class));
+                startActivity(new Intent(BenActivity.this, MenuActivity.class));
             }
         });
 

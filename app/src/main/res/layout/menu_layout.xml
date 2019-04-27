@@ -91,22 +91,6 @@
         app:maxImageSize="96dp" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/hidden"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        app:backgroundTint="@android:color/background_light"
-        app:fabCustomSize="112dp"
-        app:fabSize="auto"
-        app:layout_constraintBottom_toBottomOf="@+id/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:maxImageSize="96dp"
-        app:srcCompat="@drawable/question_mark" />
-
-    <android.support.design.widget.FloatingActionButton
         android:id="@+id/studentPage"
         android:layout_width="112dp"
         android:layout_height="112dp"
@@ -124,6 +108,46 @@
         app:layout_constraintHorizontal_bias="0.175"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
+        app:maxImageSize="86dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/tutorPage"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:clickable="true"
+        android:src="@drawable/tutor"
+        app:backgroundTint="@color/design_default_color_primary_dark"
+        app:fabCustomSize="112dp"
+        app:fabSize="auto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.174"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentPage"
+        app:maxImageSize="86dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/programmerPage"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:src="@drawable/programmer"
+        app:backgroundTint="@color/design_default_color_primary_dark"
+        app:fabCustomSize="112dp"
+        app:fabSize="auto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.861"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/laptopPage"
         app:maxImageSize="86dp" />
 
 

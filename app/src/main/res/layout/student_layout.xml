@@ -208,7 +208,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="50G/computer"
+        android:text="50G/student"
         app:layout_constraintEnd_toStartOf="@+id/rate"
         app:layout_constraintStart_toStartOf="@+id/blueBakcgroudn2"
         app:layout_constraintTop_toBottomOf="@+id/whiteback" />
