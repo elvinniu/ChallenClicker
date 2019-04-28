@@ -147,6 +147,9 @@ public class StudentActivity extends AppCompatActivity {
         MainActivity.GlobalVars.numStudents = MainActivity.GlobalVars.pref.getLong("students", 0L);
         geoffCounter = MainActivity.GlobalVars.globalChallen + "";
         updatePrice();
+        Button pricetag = findViewById(R.id.pricetag);
+        priceString = price + "G per";
+        pricetag.setText(priceString);
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 
