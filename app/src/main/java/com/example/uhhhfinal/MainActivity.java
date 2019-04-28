@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 
+    final MediaPlayer geoffmusic = MediaPlayer.create(this, R.raw.track13_theverve);
     final Handler handler = new Handler();
     Timer timer = new Timer(false);
     TimerTask timerTask = new TimerTask() {
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     updateText();
+                    geoffmusic.start();
                 }
             });
         }
