@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Timer;
 import java.util.TimerTask;
 
 public class LaptopActivity extends AppCompatActivity {
@@ -42,28 +43,37 @@ public class LaptopActivity extends AppCompatActivity {
 
     }
 
-    long startTime = 0;
-
-    //runs without a timer by reposting this handler at the end of the runnable
-    Handler timerHandler = new Handler();
-    Runnable timerRunnable = new Runnable() {
-
+    final Handler handler = new Handler();
+    Timer timer = new Timer(false);
+    TimerTask timerTask = new TimerTask() {
         @Override
         public void run() {
-            long millis = System.currentTimeMillis() - startTime;
-            int seconds = (int) (millis / 1000);
-            int minutes = seconds / 60;
-            seconds = seconds % 60;
-            /*
-            FloatingActionButton laptop = findViewById(R.id.laptopPage);
-            if (MainActivity.GlobalVars.globalChallen >= 10) {
-                laptop.setBackgroundResource(R.drawable.question_mark);
-                laptop.setBackgroundColor(Color.WHITE);
-            }
-*/
-            timerHandler.postDelayed(this, 500);
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    updateText();
+                }
+            });
         }
     };
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timer.cancel();
+    }
+
+    public void updateText() {
+        TextView counter = findViewById(R.id.currency);
+        geoffCounter = MainActivity.GlobalVars.globalChallen + "";
+        counter.setText(geoffCounter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

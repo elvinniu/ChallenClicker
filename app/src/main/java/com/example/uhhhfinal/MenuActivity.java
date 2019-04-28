@@ -20,6 +20,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.util.Set;
+import java.util.Timer;
 import java.util.TimerTask;
 
 public class MenuActivity extends AppCompatActivity {
@@ -81,6 +82,38 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    final Handler handler = new Handler();
+    Timer timer = new Timer(false);
+    TimerTask timerTask = new TimerTask() {
+        @Override
+        public void run() {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    updateText();
+                }
+            });
+        }
+    };
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timer.cancel();
+    }
+
+    public void updateText() {
+        TextView counter = findViewById(R.id.currency);
+        geoffCounter = MainActivity.GlobalVars.globalChallen + "";
+        counter.setText(geoffCounter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 
     public void changeIcon() {

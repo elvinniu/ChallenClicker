@@ -93,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     updateText();
-                    System.out.println("challelesln: " + GlobalVars.globalChallen);
-                    System.out.println("main: " + GlobalVars.numStudents);
                 }
             });
         }
@@ -110,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
         TextView counter = findViewById(R.id.gcounter);
         geocounter = GlobalVars.globalChallen + " geoffs";
         counter.setText(geocounter);
-        System.out.println(geocounter);
     }
 
     @Override

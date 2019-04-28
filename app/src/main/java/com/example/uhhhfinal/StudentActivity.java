@@ -117,8 +117,6 @@ public class StudentActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     updateText();
-                    System.out.println("challelesln: " + MainActivity.GlobalVars.globalChallen);
-                    System.out.println("main: " + MainActivity.GlobalVars.numStudents);
                 }
             });
         }
@@ -134,7 +132,6 @@ public class StudentActivity extends AppCompatActivity {
         TextView counter = findViewById(R.id.currency);
         geoffCounter = MainActivity.GlobalVars.globalChallen + "";
         counter.setText(geoffCounter);
-        System.out.println(geoffCounter);
     }
 
     @Override
