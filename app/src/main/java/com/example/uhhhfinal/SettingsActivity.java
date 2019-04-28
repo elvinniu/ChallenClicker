@@ -42,9 +42,16 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 MainActivity.GlobalVars.globalChallen = 0L;
                 MainActivity.GlobalVars.numStudents = 0L;
+                MainActivity.GlobalVars.numLaptops = 0L;
+                MainActivity.GlobalVars.numTutors = 0L;
+                MainActivity.GlobalVars.numProgrammers = 0L;
+
                 SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
                 editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
                 editor.putLong("students", MainActivity.GlobalVars.numStudents);
+                editor.putLong("laptops", MainActivity.GlobalVars.numLaptops);
+                editor.putLong("tutors", MainActivity.GlobalVars.numTutors);
+                editor.putLong("programmers", MainActivity.GlobalVars.numProgrammers);
                 editor.apply();
             }
         });
