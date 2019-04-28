@@ -2,23 +2,15 @@ package com.example.uhhhfinal;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,6 +20,7 @@ public class StudentActivity extends AppCompatActivity {
     private Long price = 6L;
     private Long priceten = Math.round(price * 20.303718238);
     private Long pricehundred = Math.round(price * 7828749.671335256);
+    private String priceString = price + "G per";
 
     protected void updatePrice() {
         price = Math.round(6*(Math.pow(1.15, MainActivity.GlobalVars.numStudents)));
@@ -51,6 +44,9 @@ public class StudentActivity extends AppCompatActivity {
             }
         });
 
+        Button pricetag = findViewById(R.id.pricetag);
+        pricetag.setText(priceString);
+
         Button buyone = findViewById(R.id.plus1);
         buyone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +64,9 @@ public class StudentActivity extends AppCompatActivity {
                 geoffCounter = MainActivity.GlobalVars.globalChallen + "";
                 currentGeoffs.setText(geoffCounter);
                 updatePrice();
+                Button pricetag = findViewById(R.id.pricetag);
+                priceString = price + "G per";
+                pricetag.setText(priceString);
             }
         });
 
@@ -86,6 +85,9 @@ public class StudentActivity extends AppCompatActivity {
                 TextView currentGeoffs = findViewById(R.id.currency);
                 currentGeoffs.setText(geoffCounter);
                 updatePrice();
+                Button pricetag = findViewById(R.id.pricetag);
+                priceString = price + "G per";
+                pricetag.setText(priceString);
             }
         });
 
@@ -104,6 +106,9 @@ public class StudentActivity extends AppCompatActivity {
                 TextView currentGeoffs = findViewById(R.id.currency);
                 currentGeoffs.setText(geoffCounter);
                 updatePrice();
+                Button pricetag = findViewById(R.id.pricetag);
+                priceString = price + "G per";
+                pricetag.setText(priceString);
             }
         });
     }
@@ -141,6 +146,7 @@ public class StudentActivity extends AppCompatActivity {
         MainActivity.GlobalVars.globalChallen = MainActivity.GlobalVars.pref.getLong("challens", 0L);
         MainActivity.GlobalVars.numStudents = MainActivity.GlobalVars.pref.getLong("students", 0L);
         geoffCounter = MainActivity.GlobalVars.globalChallen + "";
+        updatePrice();
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 

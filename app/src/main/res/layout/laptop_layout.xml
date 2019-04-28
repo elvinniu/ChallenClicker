@@ -200,7 +200,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/price"
+        android:id="@+id/pricetag"
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
