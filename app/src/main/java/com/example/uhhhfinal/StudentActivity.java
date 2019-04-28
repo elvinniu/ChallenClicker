@@ -108,6 +108,35 @@ public class StudentActivity extends AppCompatActivity {
         });
     }
 
+    final Handler handler = new Handler();
+    Timer timer = new Timer(false);
+    TimerTask timerTask = new TimerTask() {
+        @Override
+        public void run() {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    updateText();
+                    System.out.println("challelesln: " + MainActivity.GlobalVars.globalChallen);
+                    System.out.println("main: " + MainActivity.GlobalVars.numStudents);
+                }
+            });
+        }
+    };
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timer.cancel();
+    }
+
+    public void updateText() {
+        TextView counter = findViewById(R.id.currency);
+        geoffCounter = MainActivity.GlobalVars.globalChallen + "";
+        counter.setText(geoffCounter);
+        System.out.println(geoffCounter);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -115,7 +144,7 @@ public class StudentActivity extends AppCompatActivity {
         MainActivity.GlobalVars.globalChallen = MainActivity.GlobalVars.pref.getLong("challens", 0L);
         MainActivity.GlobalVars.numStudents = MainActivity.GlobalVars.pref.getLong("students", 0L);
         geoffCounter = MainActivity.GlobalVars.globalChallen + "";
-        //updateSecond();
+        timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 
     @Override

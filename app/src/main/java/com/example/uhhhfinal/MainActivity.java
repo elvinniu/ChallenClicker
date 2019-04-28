@@ -1,23 +1,17 @@
 package com.example.uhhhfinal;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -83,9 +77,6 @@ public class MainActivity extends AppCompatActivity {
                         editor.putLong("students", GlobalVars.numStudents);
                         editor.apply();
                         updateText();
-                        System.out.println("challelesln: " + GlobalVars.globalChallen);
-                        System.out.println("main: " + GlobalVars.numStudents);
-                        updateText();
                     }
                 });
             }
@@ -93,10 +84,33 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 
+    final Handler handler = new Handler();
+    Timer timer = new Timer(false);
+    TimerTask timerTask = new TimerTask() {
+        @Override
+        public void run() {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    updateText();
+                    System.out.println("challelesln: " + GlobalVars.globalChallen);
+                    System.out.println("main: " + GlobalVars.numStudents);
+                }
+            });
+        }
+    };
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timer.cancel();
+    }
+
     public void updateText() {
-        TextView counter = (TextView) findViewById(R.id.counnt);
+        TextView counter = findViewById(R.id.gcounter);
         geocounter = GlobalVars.globalChallen + " geoffs";
         counter.setText(geocounter);
+        System.out.println(geocounter);
     }
 
     @Override
@@ -110,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         //geocounter = GlobalVars.globalChallen + " geoffs";
 
         TextView startUp = (TextView) findViewById(R.id.startUp);
-        TextView counter = (TextView) findViewById(R.id.counnt);
+        TextView counter = (TextView) findViewById(R.id.gcounter);
         startUp.setText(startUpText);
         //counter.setText(geocounter);
         updateText();
@@ -123,10 +137,11 @@ public class MainActivity extends AppCompatActivity {
         if (!GlobalVars.globalStarted) {
             updateSecond();
         }
+        timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 
     public void clickGeoff() {
-        TextView counter = (TextView) findViewById(R.id.counnt);
+        TextView counter = (TextView) findViewById(R.id.gcounter);
         GlobalVars.globalChallen++;
         geocounter = GlobalVars.globalChallen + " geoffs";
 
@@ -159,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
         GlobalVars.globalStarted = savedInstanceState.getBoolean("firstTimer");
         TextView startUp = (TextView) findViewById(R.id.startUp);
-        TextView counter = (TextView) findViewById(R.id.counnt);
+        TextView counter = (TextView) findViewById(R.id.gcounter);
         startUp.setText(startUpText);
         counter.setText(geocounter);
         if (GlobalVars.globalStarted) {
