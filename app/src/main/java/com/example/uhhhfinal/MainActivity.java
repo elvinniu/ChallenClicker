@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         final MediaPlayer geoffWelcome = MediaPlayer.create(this, R.raw.geoffsoundwelcome);
-
         ImageButton button = (ImageButton) findViewById(R.id.geoff);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
