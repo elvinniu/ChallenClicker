@@ -307,11 +307,11 @@
         android:id="@+id/upgrade1desc"
         android:layout_width="150dp"
         android:layout_height="80dp"
+        android:text="Let's face it, a regular tutor just isn't helping enough. Luckly, CS125 has several wonderful big brain CA's that should be at least 10x better"
         android:textSize="8dp"
         app:layout_constraintEnd_toEndOf="@+id/csUpgrade"
         app:layout_constraintStart_toStartOf="@+id/csUpgrade"
-        app:layout_constraintTop_toBottomOf="@+id/upgrade1cost"
-        tools:text="Let's face it, a regular tutor just isn't helping enough. Luckly, CS125 has several wonderful big brain CA's that should be at least 10x better" />
+        app:layout_constraintTop_toBottomOf="@+id/upgrade1cost" />
 
     <Button
         android:id="@+id/upgrade2cost"
@@ -327,11 +327,10 @@
         android:id="@+id/upgrade2desc"
         android:layout_width="150dp"
         android:layout_height="80dp"
-        android:text="Button"
+        android:text="CS125 also has 9 Magnificent TA's that should improve CA tutoring power 1000x"
         android:textSize="8dp"
         app:layout_constraintEnd_toEndOf="@+id/csUpgrade2"
         app:layout_constraintStart_toStartOf="@+id/csUpgrade2"
-        app:layout_constraintTop_toBottomOf="@+id/upgrade2cost"
-        tools:text="CS125 also has 9 Magnificent TA's that should improve CA tutoring power 1000x" />
+        app:layout_constraintTop_toBottomOf="@+id/upgrade2cost" />
 
 </android.support.constraint.ConstraintLayout>

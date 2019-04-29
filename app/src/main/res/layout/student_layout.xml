@@ -307,12 +307,11 @@
         android:id="@+id/upgrade1desc"
         android:layout_width="150dp"
         android:layout_height="80dp"
-        android:text="Button"
+        android:text="By employing CS students, you can increase Geoff efficiency by 10 times!"
         android:textSize="8dp"
         app:layout_constraintEnd_toEndOf="@+id/csUpgrade"
         app:layout_constraintStart_toStartOf="@+id/csUpgrade"
-        app:layout_constraintTop_toBottomOf="@+id/upgrade1cost"
-        tools:text="By employing CS students, you can increase Geoff efficiency by 10 times!" />
+        app:layout_constraintTop_toBottomOf="@+id/upgrade1cost" />
 
     <Button
         android:id="@+id/upgrade2cost"
@@ -328,11 +327,10 @@
         android:id="@+id/upgrade2desc"
         android:layout_width="150dp"
         android:layout_height="80dp"
-        android:text="Button"
+        android:text="University of Illinois CS Students are so talented, they can click 1000 times faster than a regular CS student"
         android:textSize="8dp"
         app:layout_constraintEnd_toEndOf="@+id/csUpgrade2"
         app:layout_constraintStart_toStartOf="@+id/csUpgrade2"
-        app:layout_constraintTop_toBottomOf="@+id/upgrade2cost"
-        tools:text="University of Illinois CS Students are so talented, they can click 1000 times faster than a regular CS student" />
+        app:layout_constraintTop_toBottomOf="@+id/upgrade2cost" />
 
 </android.support.constraint.ConstraintLayout>

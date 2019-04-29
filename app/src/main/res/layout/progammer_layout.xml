@@ -307,11 +307,11 @@
         android:id="@+id/upgrade1desc"
         android:layout_width="150dp"
         android:layout_height="80dp"
+        android:text="As Challen Clicker was an app made in Java, upgrading to Java devs should allow for 10x Hacking Potential"
         android:textSize="8dp"
         app:layout_constraintEnd_toEndOf="@+id/csUpgrade"
         app:layout_constraintStart_toStartOf="@+id/csUpgrade"
-        app:layout_constraintTop_toBottomOf="@+id/upgrade1cost"
-        tools:text="As Challen Clicker was an app made in Java, upgrading to Java devs should allow for 10x Hacking Potential" />
+        app:layout_constraintTop_toBottomOf="@+id/upgrade1cost" />
 
     <Button
         android:id="@+id/upgrade2cost"
@@ -327,11 +327,10 @@
         android:id="@+id/upgrade2desc"
         android:layout_width="150dp"
         android:layout_height="80dp"
-        android:text="Button"
+        android:text="James Gosling, founder of java and legendary computer scientist hailing from the Canadian Northern Wastes is 1000x better than any other Java Dev ever"
         android:textSize="7.5dp"
         app:layout_constraintEnd_toEndOf="@+id/csUpgrade2"
         app:layout_constraintStart_toStartOf="@+id/csUpgrade2"
-        app:layout_constraintTop_toBottomOf="@+id/upgrade2cost"
-        tools:text="James Gosling, founder of java and legendary computer scientist hailing from the Canadian Northern Wastes is 1000x better than any other Java Dev ever" />
+        app:layout_constraintTop_toBottomOf="@+id/upgrade2cost" />
 
 </android.support.constraint.ConstraintLayout>
