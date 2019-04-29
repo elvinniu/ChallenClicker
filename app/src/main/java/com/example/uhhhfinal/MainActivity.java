@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public String geocounter = GlobalVars.globalChallen + " geoffs";
     public String startUpText = "What are you waiting for? Touch him!";
+    MediaPlayer geoffmusic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +73,14 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         SharedPreferences.Editor editor = GlobalVars.pref.edit();
                         GlobalVars.globalChallen += GlobalVars.numStudents;
+                        GlobalVars.globalChallen += 10 * GlobalVars.numLaptops;
+                        GlobalVars.globalChallen += 80 * GlobalVars.numTutors;
+                        GlobalVars.globalChallen += 470 * GlobalVars.numProgrammers;
                         editor.putLong("challens", GlobalVars.globalChallen);
                         editor.putLong("students", GlobalVars.numStudents);
+                        editor.putLong("laptops", GlobalVars.numLaptops);
+                        editor.putLong("tutors", GlobalVars.numTutors);
+                        editor.putLong("programmers", GlobalVars.numProgrammers);
                         editor.apply();
                         updateText();
                     }
@@ -100,14 +107,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+
+        //geoffmusic.stop();
+        //geoffmusic.release();
         timer.cancel();
     }
 
     public void updateText() {
-        final MediaPlayer geoffmusic = MediaPlayer.create(this, R.raw.track13_theverve);
-        geoffmusic.start();
+        /*
+        geoffmusic = MediaPlayer.create(this, R.raw.track13_theverve);
+        if (!geoffmusic.isPlaying()) {
+            geoffmusic.start();
+        } else {
+            geoffmusic.stop();
+            geoffmusic.release();
+        }
+*/
         TextView counter = findViewById(R.id.gcounter);
-        geocounter = GlobalVars.globalChallen + " geoffs";
+        formatText();
         counter.setText(geocounter);
     }
 
@@ -118,6 +135,9 @@ public class MainActivity extends AppCompatActivity {
         GlobalVars.pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         GlobalVars.globalChallen = GlobalVars.pref.getLong("challens", 0L);
         GlobalVars.numStudents = GlobalVars.pref.getLong("students", 0L);
+        GlobalVars.numLaptops = GlobalVars.pref.getLong("laptops", 0L);
+        GlobalVars.numTutors = GlobalVars.pref.getLong("tutors", 0L);
+        GlobalVars.numProgrammers = GlobalVars.pref.getLong("progammers", 0L);
 
         //geocounter = GlobalVars.globalChallen + " geoffs";
 
@@ -138,11 +158,45 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 
+    public void formatText() {
+        int zeros = (int) Math.log10(GlobalVars.globalChallen);
+        if (zeros < 3) {
+            geocounter = GlobalVars.globalChallen + " geoffs";
+        }
+        if (zeros >= 3) {
+            double toDisplay = Math.floor(GlobalVars.globalChallen / Math.pow(10, 2)) / 10;
+            geocounter = toDisplay + "K geoffs";
+        }
+        if (zeros >= 6) {
+            double toDisplay = Math.floor(GlobalVars.globalChallen / Math.pow(10, 5)) / 10;
+            geocounter = toDisplay + "M geoffs";
+        }
+        if (zeros >= 9) {
+            double toDisplay = Math.floor(GlobalVars.globalChallen / Math.pow(10, 8)) / 10;
+            geocounter = toDisplay + "B geoffs";
+        }
+        if (zeros >= 12) {
+            double toDisplay = Math.floor(GlobalVars.globalChallen / Math.pow(10, 11)) / 10;
+            geocounter = toDisplay + "T geoffs";
+        }
+        if (zeros >= 15) {
+            double toDisplay = Math.floor(GlobalVars.globalChallen / Math.pow(10, 14)) / 10;
+            geocounter = toDisplay + "q geoffs";
+        }
+        if (zeros >= 18) {
+            double toDisplay = Math.floor(GlobalVars.globalChallen / Math.pow(10, 17)) / 10;
+            geocounter = toDisplay + "Q geoffs";
+        }
+        if (zeros >= 21) {
+            double toDisplay = Math.floor(GlobalVars.globalChallen / Math.pow(10, 20)) / 10;
+            geocounter = toDisplay + "s geoffs";
+        }
+    }
+
     public void clickGeoff() {
         TextView counter = (TextView) findViewById(R.id.gcounter);
         GlobalVars.globalChallen++;
-        geocounter = GlobalVars.globalChallen + " geoffs";
-
+        formatText();
         counter.setText(geocounter);
         TextView startUp = (TextView) findViewById(R.id.startUp);
         startUp.setText(startUpText);
@@ -174,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
         TextView startUp = (TextView) findViewById(R.id.startUp);
         TextView counter = (TextView) findViewById(R.id.gcounter);
         startUp.setText(startUpText);
+        formatText();
         counter.setText(geocounter);
         if (GlobalVars.globalStarted) {
             startUp.setVisibility(View.GONE);

@@ -106,13 +106,51 @@ public class MenuActivity extends AppCompatActivity {
 
     public void updateText() {
         TextView counter = findViewById(R.id.currency);
-        geoffCounter = MainActivity.GlobalVars.globalChallen + "";
+        formatText();
         counter.setText(geoffCounter);
+    }
+
+    public void formatText() {
+        int zeros = (int) Math.log10(MainActivity.GlobalVars.globalChallen);
+        if (zeros < 3) {
+            geoffCounter = MainActivity.GlobalVars.globalChallen + "";
+        }
+        if (zeros >= 3) {
+            double toDisplay = Math.floor(MainActivity.GlobalVars.globalChallen / Math.pow(10, 2)) / 10;
+            geoffCounter = toDisplay + "K";
+        }
+        if (zeros >= 6) {
+            double toDisplay = Math.floor(MainActivity.GlobalVars.globalChallen / Math.pow(10, 5)) / 10;
+            geoffCounter = toDisplay + "M";
+        }
+        if (zeros >= 9) {
+            double toDisplay = Math.floor(MainActivity.GlobalVars.globalChallen / Math.pow(10, 8)) / 10;
+            geoffCounter = toDisplay + "B";
+        }
+        if (zeros >= 12) {
+            double toDisplay = Math.floor(MainActivity.GlobalVars.globalChallen / Math.pow(10, 11)) / 10;
+            geoffCounter = toDisplay + "T";
+        }
+        if (zeros >= 15) {
+            double toDisplay = Math.floor(MainActivity.GlobalVars.globalChallen / Math.pow(10, 14)) / 10;
+            geoffCounter = toDisplay + "q";
+        }
+        if (zeros >= 18) {
+            double toDisplay = Math.floor(MainActivity.GlobalVars.globalChallen / Math.pow(10, 17)) / 10;
+            geoffCounter = toDisplay + "Q";
+        }
+        if (zeros >= 21) {
+            double toDisplay = Math.floor(MainActivity.GlobalVars.globalChallen / Math.pow(10, 20)) / 10;
+            geoffCounter = toDisplay + "s";
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        TextView currentGeoffs = findViewById(R.id.currency);
+        formatText();
+        currentGeoffs.setText(geoffCounter);
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 
