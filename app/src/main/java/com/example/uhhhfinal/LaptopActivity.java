@@ -17,13 +17,13 @@ import java.util.TimerTask;
 
 public class LaptopActivity extends AppCompatActivity {
     public String geoffCounter = MainActivity.GlobalVars.globalChallen + "";
-    private Long price = 6L;
+    private Long price = 1000L;
     private Long priceten = Math.round(price * 20.303718238);
     private Long pricehundred = Math.round(price * 7828749.671335256);
     private String priceString = price + "G per";
 
     protected void updatePrice() {
-        price = Math.round(6*(Math.pow(1.15, MainActivity.GlobalVars.numLaptops)));
+        price = Math.round(1000*(Math.pow(1.15, MainActivity.GlobalVars.numLaptops)));
         priceten = Math.round(price * 20.303718238);
         pricehundred = Math.round(price * 7828749.671335256);
     }

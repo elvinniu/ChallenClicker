@@ -222,7 +222,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
         android:layout_marginRight="36dp"
-        android:text="10G/second"
+        android:text="470G/second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/blueBakcgroudn2"
         app:layout_constraintTop_toBottomOf="@+id/plus10" />
