@@ -115,11 +115,11 @@
     <TextView
         android:id="@+id/description"
         android:layout_width="326dp"
-        android:layout_height="34dp"
+        android:layout_height="45dp"
         android:gravity="center"
-        android:text="Descrptionno"
+        android:text="Talented students can be employed to assist in Geoff production"
         android:textColor="@android:color/background_light"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/blueBakcgroudn"
         app:layout_constraintEnd_toEndOf="@+id/blueBakcgroudn"
         app:layout_constraintStart_toStartOf="@+id/blueBakcgroudn"
@@ -252,5 +252,87 @@
         app:layout_constraintEnd_toEndOf="@+id/upgradebacc"
         app:layout_constraintStart_toStartOf="@+id/upgradebacc"
         app:layout_constraintTop_toTopOf="@+id/upgradebacc" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/csUpgrade"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:src="@drawable/cs_student"
+        app:backgroundTint="@color/design_default_color_primary"
+        app:fabCustomSize="102dp"
+        app:fabSize="auto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:maxImageSize="96dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/csUpgrade2"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:src="@drawable/uiuc_student"
+        app:backgroundTint="@color/design_default_color_primary"
+        app:fabCustomSize="112dp"
+        app:fabSize="auto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:maxImageSize="86dp" />
+
+    <Button
+        android:id="@+id/upgrade1cost"
+        android:layout_width="112dp"
+        android:layout_height="30dp"
+        android:text="50.0K G"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/csUpgrade"
+        app:layout_constraintStart_toStartOf="@+id/csUpgrade"
+        app:layout_constraintTop_toBottomOf="@+id/csUpgrade" />
+
+    <Button
+        android:id="@+id/upgrade1desc"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:text="Button"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/csUpgrade"
+        app:layout_constraintStart_toStartOf="@+id/csUpgrade"
+        app:layout_constraintTop_toBottomOf="@+id/upgrade1cost"
+        tools:text="By employing CS students, you can increase Geoff efficiency by 10 times!" />
+
+    <Button
+        android:id="@+id/upgrade2cost"
+        android:layout_width="112dp"
+        android:layout_height="30dp"
+        android:text="100.0M G"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/csUpgrade2"
+        app:layout_constraintStart_toStartOf="@+id/csUpgrade2"
+        app:layout_constraintTop_toBottomOf="@+id/csUpgrade2" />
+
+    <Button
+        android:id="@+id/upgrade2desc"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:text="Button"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/csUpgrade2"
+        app:layout_constraintStart_toStartOf="@+id/csUpgrade2"
+        app:layout_constraintTop_toBottomOf="@+id/upgrade2cost"
+        tools:text="University of Illinois CS Students are so talented, they can click 1000 times faster than a regular CS student" />
 
 </android.support.constraint.ConstraintLayout>

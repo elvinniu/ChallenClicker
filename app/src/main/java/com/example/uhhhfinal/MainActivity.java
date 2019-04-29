@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         GlobalVars.globalChallen += 10 * GlobalVars.numLaptops;
                         GlobalVars.globalChallen += 80 * GlobalVars.numTutors;
                         GlobalVars.globalChallen += 470 * GlobalVars.numProgrammers;
-                        GlobalVars.globalChallen += 2600 * GlobalVars.numBens;
+                        GlobalVars.globalChallen += 100000000 * GlobalVars.numBens;
                         editor.putLong("challens", GlobalVars.globalChallen);
                         editor.putLong("students", GlobalVars.numStudents);
                         editor.putLong("laptops", GlobalVars.numLaptops);

@@ -115,11 +115,11 @@
     <TextView
         android:id="@+id/description"
         android:layout_width="326dp"
-        android:layout_height="34dp"
+        android:layout_height="60dp"
         android:gravity="center"
-        android:text="Descrptionno"
+        android:text="Absolute Massive Legend Ben Nordick is a Course Developer of CS125 and reveals mighty secrets to a select few on the forum"
         android:textColor="@android:color/background_light"
-        android:textSize="18sp"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="@+id/blueBakcgroudn"
         app:layout_constraintEnd_toEndOf="@+id/blueBakcgroudn"
         app:layout_constraintStart_toStartOf="@+id/blueBakcgroudn"
@@ -222,7 +222,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
         android:layout_marginRight="36dp"
-        android:text="80G/second"
+        android:text="100M G/second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/blueBakcgroudn2"
         app:layout_constraintTop_toBottomOf="@+id/plus10" />

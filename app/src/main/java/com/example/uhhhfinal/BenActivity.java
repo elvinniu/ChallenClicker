@@ -17,13 +17,13 @@ import java.util.TimerTask;
 
 public class BenActivity extends AppCompatActivity {
     public String geoffCounter = MainActivity.GlobalVars.globalChallen + "";
-    private Long price = 1300000L;
+    private Long price = 10000000000000L;
     private Long priceten = Math.round(price * 20.303718238);
     private Long pricehundred = Math.round(price * 7828749.671335256);
     private String priceString = price + "G per";
 
     protected void updatePrice() {
-        price = Math.round(1300000 * (Math.pow(1.15, MainActivity.GlobalVars.numBens)));
+        price = Math.round(10000000000000L * (Math.pow(1.15, MainActivity.GlobalVars.numBens)));
         priceten = Math.round(price * 20.303718238);
         pricehundred = Math.round(price * 7828749.671335256);
     }

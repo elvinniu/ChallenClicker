@@ -253,4 +253,85 @@
         app:layout_constraintStart_toStartOf="@+id/upgradebacc"
         app:layout_constraintTop_toTopOf="@+id/upgradebacc" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/csUpgrade"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:src="@drawable/big_brain_ca"
+        app:backgroundTint="@color/design_default_color_primary"
+        app:fabCustomSize="112dp"
+        app:fabSize="auto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:maxImageSize="80dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/csUpgrade2"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:src="@drawable/uiuc_ta"
+        app:backgroundTint="@color/design_default_color_primary"
+        app:fabCustomSize="102dp"
+        app:fabSize="auto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:maxImageSize="102dp" />
+
+    <Button
+        android:id="@+id/upgrade1cost"
+        android:layout_width="112dp"
+        android:layout_height="30dp"
+        android:text="93.5M G"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/csUpgrade"
+        app:layout_constraintStart_toStartOf="@+id/csUpgrade"
+        app:layout_constraintTop_toBottomOf="@+id/csUpgrade" />
+
+    <Button
+        android:id="@+id/upgrade1desc"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/csUpgrade"
+        app:layout_constraintStart_toStartOf="@+id/csUpgrade"
+        app:layout_constraintTop_toBottomOf="@+id/upgrade1cost"
+        tools:text="Let's face it, a regular tutor just isn't helping enough. Luckly, CS125 has several wonderful big brain CA's that should be at least 10x better" />
+
+    <Button
+        android:id="@+id/upgrade2cost"
+        android:layout_width="112dp"
+        android:layout_height="30dp"
+        android:text="181.5B G"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/csUpgrade2"
+        app:layout_constraintStart_toStartOf="@+id/csUpgrade2"
+        app:layout_constraintTop_toBottomOf="@+id/csUpgrade2" />
+
+    <Button
+        android:id="@+id/upgrade2desc"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:text="Button"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/csUpgrade2"
+        app:layout_constraintStart_toStartOf="@+id/csUpgrade2"
+        app:layout_constraintTop_toBottomOf="@+id/upgrade2cost"
+        tools:text="CS125 also has 9 Magnificent TA's that should improve CA tutoring power 1000x" />
+
 </android.support.constraint.ConstraintLayout>

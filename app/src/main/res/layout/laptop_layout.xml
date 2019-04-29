@@ -115,11 +115,11 @@
     <TextView
         android:id="@+id/description"
         android:layout_width="326dp"
-        android:layout_height="34dp"
+        android:layout_height="45dp"
         android:gravity="center"
-        android:text="Descrptionno"
+        android:text="By using very basic Autoclicker programs, a computer can be used to geoff it up"
         android:textColor="@android:color/background_light"
-        android:textSize="18sp"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/blueBakcgroudn"
         app:layout_constraintEnd_toEndOf="@+id/blueBakcgroudn"
         app:layout_constraintStart_toStartOf="@+id/blueBakcgroudn"
@@ -252,5 +252,87 @@
         app:layout_constraintEnd_toEndOf="@+id/upgradebacc"
         app:layout_constraintStart_toStartOf="@+id/upgradebacc"
         app:layout_constraintTop_toTopOf="@+id/upgradebacc" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/csUpgrade"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:src="@drawable/desktop"
+        app:backgroundTint="@color/design_default_color_primary"
+        app:fabCustomSize="112dp"
+        app:fabSize="auto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:maxImageSize="96dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/csUpgrade2"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:src="@drawable/supercomputer"
+        app:backgroundTint="@color/design_default_color_primary"
+        app:fabCustomSize="112dp"
+        app:fabSize="auto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:maxImageSize="96dp" />
+
+    <Button
+        android:id="@+id/upgrade1cost"
+        android:layout_width="112dp"
+        android:layout_height="30dp"
+        android:text="1.7M G"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/csUpgrade"
+        app:layout_constraintStart_toStartOf="@+id/csUpgrade"
+        app:layout_constraintTop_toBottomOf="@+id/csUpgrade" />
+
+    <Button
+        android:id="@+id/upgrade1desc"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:text="Tired of that slow laptop click speed? Speed your autoclickers up by upgrading to a desktop desktop computer (x10 Geoffs)"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/csUpgrade"
+        app:layout_constraintStart_toStartOf="@+id/csUpgrade"
+        app:layout_constraintTop_toBottomOf="@+id/upgrade1cost"
+        tools:text="Tired of that slow laptop click speed? Speed your autoclickers up by upgrading to a desktop desktop computer yielding x10 Geoffs" />
+
+    <Button
+        android:id="@+id/upgrade2cost"
+        android:layout_width="112dp"
+        android:layout_height="30dp"
+        android:text="3.3B G"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/csUpgrade2"
+        app:layout_constraintStart_toStartOf="@+id/csUpgrade2"
+        app:layout_constraintTop_toBottomOf="@+id/csUpgrade2" />
+
+    <Button
+        android:id="@+id/upgrade2desc"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:text="Button"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/csUpgrade2"
+        app:layout_constraintStart_toStartOf="@+id/csUpgrade2"
+        app:layout_constraintTop_toBottomOf="@+id/upgrade2cost"
+        tools:text="By using your local university's supercomputer, you have managed to improve click speed to 1000x that of your desktop computers" />
 
 </android.support.constraint.ConstraintLayout>
