@@ -1,10 +1,14 @@
 package com.example.uhhhfinal;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -33,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer geoffmusic;
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        timer.cancel();
+        geoffmusic.stop();
+        geoffmusic.release();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -40,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
             GlobalVars.globalChallen = 0L;
             GlobalVars.globalStarted = false;
         }
+
+        startService(new Intent(this, MusicService.class));
 
         final MediaPlayer geoffWelcome = MediaPlayer.create(this, R.raw.geoffsoundwelcome);
         ImageButton button = (ImageButton) findViewById(R.id.geoff);
