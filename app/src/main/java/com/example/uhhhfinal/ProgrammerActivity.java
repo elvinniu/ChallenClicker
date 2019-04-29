@@ -23,7 +23,7 @@ public class ProgrammerActivity extends AppCompatActivity {
     private String priceString = price + "G per";
 
     protected void updatePrice() {
-        price = Math.round(120000*(Math.pow(1.15, MainActivity.GlobalVars.numProgrammers)));
+        price = Math.round(120000 * (Math.pow(1.15, MainActivity.GlobalVars.numProgrammers)));
         priceten = Math.round(price * 20.303718238);
         pricehundred = Math.round(price * 7828749.671335256);
     }

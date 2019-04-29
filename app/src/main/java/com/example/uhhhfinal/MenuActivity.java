@@ -74,6 +74,14 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton ben = findViewById(R.id.benPage);
+        ben.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MenuActivity.this, BenActivity.class));
+            }
+        });
+
         FloatingActionButton settings = findViewById(R.id.settings);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

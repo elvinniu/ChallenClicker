@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         public static Long numLaptops;
         public static Long numTutors;
         public static Long numProgrammers;
+        public static Long numBens;
         public static SharedPreferences pref;
     }
     public String geocounter = GlobalVars.globalChallen + " geoffs";
@@ -76,11 +77,13 @@ public class MainActivity extends AppCompatActivity {
                         GlobalVars.globalChallen += 10 * GlobalVars.numLaptops;
                         GlobalVars.globalChallen += 80 * GlobalVars.numTutors;
                         GlobalVars.globalChallen += 470 * GlobalVars.numProgrammers;
+                        GlobalVars.globalChallen += 2600 * GlobalVars.numBens;
                         editor.putLong("challens", GlobalVars.globalChallen);
                         editor.putLong("students", GlobalVars.numStudents);
                         editor.putLong("laptops", GlobalVars.numLaptops);
                         editor.putLong("tutors", GlobalVars.numTutors);
                         editor.putLong("programmers", GlobalVars.numProgrammers);
+                        editor.putLong("bens", GlobalVars.numBens);
                         editor.apply();
                         updateText();
                     }
@@ -138,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         GlobalVars.numLaptops = GlobalVars.pref.getLong("laptops", 0L);
         GlobalVars.numTutors = GlobalVars.pref.getLong("tutors", 0L);
         GlobalVars.numProgrammers = GlobalVars.pref.getLong("progammers", 0L);
+        GlobalVars.numBens = GlobalVars.pref.getLong("bens", 0L);
 
         //geocounter = GlobalVars.globalChallen + " geoffs";
 

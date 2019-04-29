@@ -45,6 +45,7 @@ public class SettingsActivity extends AppCompatActivity {
                 MainActivity.GlobalVars.numLaptops = 0L;
                 MainActivity.GlobalVars.numTutors = 0L;
                 MainActivity.GlobalVars.numProgrammers = 0L;
+                MainActivity.GlobalVars.numBens = 0L;
 
                 SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
                 editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
@@ -52,6 +53,7 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.putLong("laptops", MainActivity.GlobalVars.numLaptops);
                 editor.putLong("tutors", MainActivity.GlobalVars.numTutors);
                 editor.putLong("programmers", MainActivity.GlobalVars.numProgrammers);
+                editor.putLong("bens", MainActivity.GlobalVars.numBens);
                 editor.apply();
             }
         });
