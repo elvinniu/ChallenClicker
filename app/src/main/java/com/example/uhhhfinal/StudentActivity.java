@@ -2,6 +2,8 @@ package com.example.uhhhfinal;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -112,6 +114,39 @@ public class StudentActivity extends AppCompatActivity {
                 Button pricetag = findViewById(R.id.pricetag);
                 priceString = formatText(price) + " G per";
                 pricetag.setText(priceString);
+            }
+        });
+
+        final FloatingActionButton upgrade1 = findViewById(R.id.csUpgrade);
+        upgrade1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (MainActivity.GlobalVars.globalChallen >= 50000L && MainActivity.GlobalVars.genStudents < 10L) {
+                    MainActivity.GlobalVars.globalChallen -= 50000L;
+                    MainActivity.GlobalVars.genStudents = 10L;
+                    upgrade1.setBackgroundTintList(ColorStateList.valueOf(0xFF00FF00));
+                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                    editor.putLong("genStudents", MainActivity.GlobalVars.genStudents);
+                    editor.apply();
+                }
+            }
+        });
+
+        final FloatingActionButton upgrade2 = findViewById(R.id.csUpgrade2);
+        upgrade2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (MainActivity.GlobalVars.globalChallen >= 100000000L && MainActivity.GlobalVars.genStudents < 100000000L) {
+                    MainActivity.GlobalVars.globalChallen -= 100000000L;
+                    MainActivity.GlobalVars.genStudents = 10000L;
+                    upgrade1.setBackgroundTintList(ColorStateList.valueOf(0xFF00FF00));
+                    upgrade2.setBackgroundTintList(ColorStateList.valueOf(0xFF00FF00));
+                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                    editor.putLong("genStudents", MainActivity.GlobalVars.genStudents);
+                    editor.apply();
+                }
             }
         });
     }

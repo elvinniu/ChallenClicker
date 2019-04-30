@@ -31,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
         public static Long numProgrammers;
         public static Long numBens;
         public static SharedPreferences pref;
+        public static Long genStudents;
+        public static Long genLaptops;
+        public static Long genTutors;
+        public static Long genProgrammers;
+        public static Long genBens;
     }
     public String geocounter = GlobalVars.globalChallen + " geoffs";
     public String startUpText = "What are you waiting for? Touch him!";
@@ -51,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
         if (!GlobalVars.globalStarted) {
             GlobalVars.globalChallen = 0L;
             GlobalVars.globalStarted = false;
+            GlobalVars.genStudents = 1L;
+            GlobalVars.genLaptops = 10L;
+            GlobalVars.genTutors = 80L;
+            GlobalVars.genProgrammers = 470L;
+            GlobalVars.genBens = 100000000L;
         }
 
         startService(new Intent(this, MusicService.class));
@@ -87,17 +97,22 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         SharedPreferences.Editor editor = GlobalVars.pref.edit();
-                        GlobalVars.globalChallen += GlobalVars.numStudents;
-                        GlobalVars.globalChallen += 10 * GlobalVars.numLaptops;
-                        GlobalVars.globalChallen += 80 * GlobalVars.numTutors;
-                        GlobalVars.globalChallen += 470 * GlobalVars.numProgrammers;
-                        GlobalVars.globalChallen += 100000000 * GlobalVars.numBens;
+                        GlobalVars.globalChallen += GlobalVars.genStudents * GlobalVars.numStudents;
+                        GlobalVars.globalChallen += GlobalVars.genLaptops * GlobalVars.numLaptops;
+                        GlobalVars.globalChallen += GlobalVars.genTutors * GlobalVars.numTutors;
+                        GlobalVars.globalChallen += GlobalVars.genProgrammers * GlobalVars.numProgrammers;
+                        GlobalVars.globalChallen += GlobalVars.genBens * GlobalVars.numBens;
                         editor.putLong("challens", GlobalVars.globalChallen);
                         editor.putLong("students", GlobalVars.numStudents);
                         editor.putLong("laptops", GlobalVars.numLaptops);
                         editor.putLong("tutors", GlobalVars.numTutors);
                         editor.putLong("programmers", GlobalVars.numProgrammers);
                         editor.putLong("bens", GlobalVars.numBens);
+                        editor.putLong("genStudents", GlobalVars.genStudents);
+                        editor.putLong("genLaptops", MainActivity.GlobalVars.genLaptops);
+                        editor.putLong("genTutors", MainActivity.GlobalVars.genTutors);
+                        editor.putLong("genProgrammers", MainActivity.GlobalVars.genProgrammers);
+                        editor.putLong("genBens", MainActivity.GlobalVars.genBens);
                         editor.apply();
                         updateText();
                     }
@@ -152,10 +167,15 @@ public class MainActivity extends AppCompatActivity {
         GlobalVars.pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         GlobalVars.globalChallen = GlobalVars.pref.getLong("challens", 0L);
         GlobalVars.numStudents = GlobalVars.pref.getLong("students", 0L);
+        GlobalVars.genStudents = GlobalVars.pref.getLong("genStudents", 1L);
         GlobalVars.numLaptops = GlobalVars.pref.getLong("laptops", 0L);
+        GlobalVars.genLaptops = GlobalVars.pref.getLong("genLaptops", 10L);
         GlobalVars.numTutors = GlobalVars.pref.getLong("tutors", 0L);
+        GlobalVars.genTutors = GlobalVars.pref.getLong("genTutors", 80L);
         GlobalVars.numProgrammers = GlobalVars.pref.getLong("progammers", 0L);
+        GlobalVars.genProgrammers = GlobalVars.pref.getLong("genProgrammers", 470L);
         GlobalVars.numBens = GlobalVars.pref.getLong("bens", 0L);
+        GlobalVars.genBens = GlobalVars.pref.getLong("genBens", 100000000L);
 
         //geocounter = GlobalVars.globalChallen + " geoffs";
 
