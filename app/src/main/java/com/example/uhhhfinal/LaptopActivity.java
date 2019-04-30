@@ -128,6 +128,9 @@ public class LaptopActivity extends AppCompatActivity {
                     editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
                     editor.putLong("genLaptops", MainActivity.GlobalVars.genLaptops);
                     editor.apply();
+                    Button rate = findViewById(R.id.rate);
+                    priceString = formatText(MainActivity.GlobalVars.genLaptops) + " G/s";
+                    rate.setText(priceString);
                 }
             }
         });
@@ -145,6 +148,9 @@ public class LaptopActivity extends AppCompatActivity {
                     editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
                     editor.putLong("genLaptops", MainActivity.GlobalVars.genLaptops);
                     editor.apply();
+                    Button rate = findViewById(R.id.rate);
+                    priceString = formatText(MainActivity.GlobalVars.genLaptops) + " G/s";
+                    rate.setText(priceString);
                 }
             }
         });
@@ -235,6 +241,9 @@ public class LaptopActivity extends AppCompatActivity {
         Button pricetag = findViewById(R.id.pricetag);
         priceString = formatText(price) + " G per";
         pricetag.setText(priceString);
+        Button rate = findViewById(R.id.rate);
+        priceString = formatText(MainActivity.GlobalVars.genLaptops) + " G/s";
+        rate.setText(priceString);
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 

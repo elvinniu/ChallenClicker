@@ -129,6 +129,9 @@ public class StudentActivity extends AppCompatActivity {
                     editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
                     editor.putLong("genStudents", MainActivity.GlobalVars.genStudents);
                     editor.apply();
+                    Button rate = findViewById(R.id.rate);
+                    priceString = formatText(MainActivity.GlobalVars.genStudents) + " G/s";
+                    rate.setText(priceString);
                 }
             }
         });
@@ -146,6 +149,9 @@ public class StudentActivity extends AppCompatActivity {
                     editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
                     editor.putLong("genStudents", MainActivity.GlobalVars.genStudents);
                     editor.apply();
+                    Button rate = findViewById(R.id.rate);
+                    priceString = formatText(MainActivity.GlobalVars.genStudents) + " G/s";
+                    rate.setText(priceString);
                 }
             }
         });
@@ -236,6 +242,9 @@ public class StudentActivity extends AppCompatActivity {
         Button pricetag = findViewById(R.id.pricetag);
         priceString = formatText(price) + " G per";
         pricetag.setText(priceString);
+        Button rate = findViewById(R.id.rate);
+        priceString = formatText(MainActivity.GlobalVars.genStudents) + " G/s";
+        rate.setText(priceString);
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 
