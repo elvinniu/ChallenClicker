@@ -71,13 +71,18 @@ public class MusicService extends Service {
             geoffmusic = MediaPlayer.create(this, R.raw.mountainking_1s);
         }
         geoffmusic.start();
+        geoffmusic.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                MusicService.this.stopSelf();
+            }
+        });
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         geoffmusic.stop();
     }
 }
