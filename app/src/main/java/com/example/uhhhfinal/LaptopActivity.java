@@ -57,7 +57,6 @@ public class LaptopActivity extends AppCompatActivity {
         buyone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(price);
                 if (MainActivity.GlobalVars.globalChallen >= price) {
                     MainActivity.GlobalVars.globalChallen -= price;
                     SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
