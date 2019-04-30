@@ -79,7 +79,7 @@ public class SettingsActivity extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity.GlobalVars.globalChallen = 100000000000000L;
+                MainActivity.GlobalVars.globalChallen = 0L;
                 MainActivity.GlobalVars.numStudents = 0L;
                 MainActivity.GlobalVars.numLaptops = 0L;
                 MainActivity.GlobalVars.numTutors = 0L;

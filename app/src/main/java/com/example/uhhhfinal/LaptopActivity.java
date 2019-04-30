@@ -132,6 +132,7 @@ public class LaptopActivity extends AppCompatActivity {
             }
         });
 
+        final MediaPlayer upgradeLaptop1 = MediaPlayer.create(this, R.raw.window);
         final FloatingActionButton upgrade1 = findViewById(R.id.csUpgrade);
         upgrade1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,10 +148,15 @@ public class LaptopActivity extends AppCompatActivity {
                     Button rate = findViewById(R.id.rate);
                     priceString = formatText(MainActivity.GlobalVars.genLaptops) + " G/s";
                     rate.setText(priceString);
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        upgradeLaptop1.start();
+                        upgradeLaptop1.setVolume(1.0f,1.0f);
+                    }
                 }
             }
         });
 
+        final MediaPlayer upgradeLaptop2 = MediaPlayer.create(this, R.raw.ohmygo);
         final FloatingActionButton upgrade2 = findViewById(R.id.csUpgrade2);
         upgrade2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,6 +173,10 @@ public class LaptopActivity extends AppCompatActivity {
                     Button rate = findViewById(R.id.rate);
                     priceString = formatText(MainActivity.GlobalVars.genLaptops) + " G/s";
                     rate.setText(priceString);
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        upgradeLaptop2.start();
+                        upgradeLaptop2.setVolume(1.0f,1.0f);
+                    }
                 }
             }
         });

@@ -133,7 +133,7 @@ public class StudentActivity extends AppCompatActivity {
             }
         });
 
-        final MediaPlayer upgradestudent1 = MediaPlayer.create(this, R.raw.studentupgrade1);
+        final MediaPlayer upgradeStudent1 = MediaPlayer.create(this, R.raw.studentupgrade1);
         final FloatingActionButton upgrade1 = findViewById(R.id.csUpgrade);
         upgrade1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,14 +150,14 @@ public class StudentActivity extends AppCompatActivity {
                     priceString = formatText(MainActivity.GlobalVars.genStudents) + " G/s";
                     rate.setText(priceString);
                     if (!MainActivity.GlobalVars.soundMute) {
-                        upgradestudent1.start();
-                        upgradestudent1.setVolume(1.0f,1.0f);
+                        upgradeStudent1.start();
+                        upgradeStudent1.setVolume(1.0f,1.0f);
                     }
                 }
             }
         });
 
-        final MediaPlayer upgradestudent2 = MediaPlayer.create(this, R.raw.geoffsoundwelcome);
+        final MediaPlayer upgradeStudent2 = MediaPlayer.create(this, R.raw.geoffsoundwelcome);
         final FloatingActionButton upgrade2 = findViewById(R.id.csUpgrade2);
         upgrade2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,8 +175,8 @@ public class StudentActivity extends AppCompatActivity {
                     priceString = formatText(MainActivity.GlobalVars.genStudents) + " G/s";
                     rate.setText(priceString);
                     if (!MainActivity.GlobalVars.soundMute) {
-                        upgradestudent2.start();
-                        upgradestudent2.setVolume(1.0f,1.0f);
+                        upgradeStudent2.start();
+                        upgradeStudent2.setVolume(1.0f,1.0f);
                     }
                 }
             }

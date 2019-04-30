@@ -132,6 +132,7 @@ public class ProgrammerActivity extends AppCompatActivity {
             }
         });
 
+        final MediaPlayer upgradeProgrammer1 = MediaPlayer.create(this, R.raw.keys);
         final FloatingActionButton upgrade1 = findViewById(R.id.csUpgrade);
         upgrade1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,10 +148,15 @@ public class ProgrammerActivity extends AppCompatActivity {
                     Button rate = findViewById(R.id.rate);
                     priceString = formatText(MainActivity.GlobalVars.genProgrammers) + " G/s";
                     rate.setText(priceString);
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        upgradeProgrammer1.start();
+                        upgradeProgrammer1.setVolume(1.0f, 1.0f);
+                    }
                 }
             }
         });
 
+        final MediaPlayer upgradeProgrammer2 = MediaPlayer.create(this, R.raw.jogos);
         final FloatingActionButton upgrade2 = findViewById(R.id.csUpgrade2);
         upgrade2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,6 +173,10 @@ public class ProgrammerActivity extends AppCompatActivity {
                     Button rate = findViewById(R.id.rate);
                     priceString = formatText(MainActivity.GlobalVars.genProgrammers) + " G/s";
                     rate.setText(priceString);
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        upgradeProgrammer2.start();
+                        upgradeProgrammer2.setVolume(1.0f, 1.0f);
+                    }
                 }
             }
         });
