@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             startService(new Intent(this, MusicService.class));
         }
 
-        final MediaPlayer geoffWelcome = MediaPlayer.create(this, R.raw.geoffsoundwelcome);
+        final MediaPlayer geoffWelcome = MediaPlayer.create(this, R.raw.ultimatestart);
         ImageButton button = findViewById(R.id.geoff);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

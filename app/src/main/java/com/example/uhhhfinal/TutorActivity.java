@@ -148,8 +148,10 @@ public class TutorActivity extends AppCompatActivity {
                     Button rate = findViewById(R.id.rate);
                     priceString = formatText(MainActivity.GlobalVars.genTutors) + " G/s";
                     rate.setText(priceString);
-                    upgradeTutor1.start();
-                    upgradeTutor1.setVolume(1.0f, 1.0f);
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        upgradeTutor1.start();
+                        upgradeTutor1.setVolume(1.0f, 1.0f);
+                    }
                 }
             }
         });
@@ -171,8 +173,10 @@ public class TutorActivity extends AppCompatActivity {
                     Button rate = findViewById(R.id.rate);
                     priceString = formatText(MainActivity.GlobalVars.genTutors) + " G/s";
                     rate.setText(priceString);
-                    upgradeTutor2.start();
-                    upgradeTutor2.setVolume(1.0f, 1.0f);
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        upgradeTutor2.start();
+                        upgradeTutor2.setVolume(1.0f, 1.0f);
+                    }
                 }
             }
         });
