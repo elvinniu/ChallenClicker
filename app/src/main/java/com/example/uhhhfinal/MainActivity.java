@@ -21,6 +21,8 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static java.lang.Boolean.FALSE;
+
 
 public class MainActivity extends AppCompatActivity {
     public static class GlobalVars {
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         public static Long genTutors;
         public static Long genProgrammers;
         public static Long genBens;
+        public static boolean musicMute;
+        public static boolean soundMute;
     }
     public String geocounter = GlobalVars.globalChallen + " geoffs";
     public String startUpText = "What are you waiting for? Touch him!";
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        timer.purge();
+        bimer.cancel();
     }
 
     private boolean isMyServiceRunning(Class<?> serviceClass) {
@@ -69,9 +73,11 @@ public class MainActivity extends AppCompatActivity {
             GlobalVars.genTutors = 80L;
             GlobalVars.genProgrammers = 470L;
             GlobalVars.genBens = 100000000L;
+            GlobalVars.musicMute = false;
+            GlobalVars.soundMute = false;
         }
 
-        if (!isMyServiceRunning(MusicService.class)) {
+        if (!isMyServiceRunning(MusicService.class ) && !GlobalVars.musicMute) {
             startService(new Intent(this, MusicService.class));
         }
 
@@ -100,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void updateSecond() {
         final Handler handler = new Handler();
-        Timer timer = new Timer(false);
+        final Timer timer = new Timer(false);
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
@@ -125,8 +131,7 @@ public class MainActivity extends AppCompatActivity {
                         editor.putLong("genProgrammers", MainActivity.GlobalVars.genProgrammers);
                         editor.putLong("genBens", MainActivity.GlobalVars.genBens);
                         editor.apply();
-                        updateText();
-                        if (!isMyServiceRunning(MusicService.class)) {
+                        if (!isMyServiceRunning(MusicService.class) && !GlobalVars.musicMute) {
                             startService(new Intent(MainActivity.this, MusicService.class));
                         }
                     }
@@ -137,8 +142,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     final Handler handler = new Handler();
-    Timer timer = new Timer(false);
-    TimerTask timerTask = new TimerTask() {
+    Timer bimer = new Timer(false);
+    TimerTask bimerTask = new TimerTask() {
         @Override
         public void run() {
             handler.post(new Runnable() {
@@ -153,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        timer.purge();
+        bimer.cancel();
     }
 
     public void updateText() {
@@ -178,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
         GlobalVars.genProgrammers = GlobalVars.pref.getLong("genProgrammers", 470L);
         GlobalVars.numBens = GlobalVars.pref.getLong("bens", 0L);
         GlobalVars.genBens = GlobalVars.pref.getLong("genBens", 100000000L);
+        GlobalVars.musicMute = GlobalVars.pref.getBoolean("musicMute", FALSE);
+        GlobalVars.soundMute = GlobalVars.pref.getBoolean("soundMute", FALSE);
         TextView startUp = findViewById(R.id.startUp);
         TextView counter = findViewById(R.id.gcounter);
         startUp.setText(startUpText);
@@ -191,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
         if (!GlobalVars.globalStarted) {
             updateSecond();
         }
-        timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
+        bimer.schedule(bimerTask, 1000, 1000); // 1000 = 1 second.
     }
 
     public void formatText() {

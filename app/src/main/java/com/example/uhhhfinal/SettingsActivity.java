@@ -22,11 +22,50 @@ import org.w3c.dom.Text;
 
 import java.util.TimerTask;
 
+import static java.lang.Boolean.FALSE;
+
 public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_layout);
+
+        FloatingActionButton music = findViewById(R.id.music);
+        music.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (MainActivity.GlobalVars.pref.getBoolean("musicMute", FALSE)) {
+                    MainActivity.GlobalVars.musicMute = false;
+                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    editor.putBoolean("musicMute", MainActivity.GlobalVars.musicMute);
+                    editor.apply();
+                } else {
+                    stopService(new Intent(SettingsActivity.this, MusicService.class));
+                    MainActivity.GlobalVars.musicMute = true;
+                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    editor.putBoolean("musicMute", MainActivity.GlobalVars.musicMute);
+                    editor.apply();
+                }
+            }
+        });
+
+        FloatingActionButton sound = findViewById(R.id.sound);
+        sound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (MainActivity.GlobalVars.pref.getBoolean("soundMute", FALSE)) {
+                    MainActivity.GlobalVars.soundMute = false;
+                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    editor.putBoolean("soundMute", MainActivity.GlobalVars.soundMute);
+                    editor.apply();
+                } else {
+                    MainActivity.GlobalVars.soundMute = true;
+                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    editor.putBoolean("soundMute", MainActivity.GlobalVars.soundMute);
+                    editor.apply();
+                }
+            }
+        });
 
         FloatingActionButton back = findViewById(R.id.backButton);
         back.setOnClickListener(new View.OnClickListener() {
