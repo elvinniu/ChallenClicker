@@ -65,8 +65,10 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MenuActivity.this, TutorActivity.class));
-                geoffTutor.start();
-                geoffTutor.setVolume(1.0f, 1.0f);
+                if(!MainActivity.GlobalVars.soundMute) {
+                    geoffTutor.start();
+                    geoffTutor.setVolume(1.0f, 1.0f);
+                }
             }
         });
 
