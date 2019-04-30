@@ -3,6 +3,7 @@ package com.example.uhhhfinal;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -49,6 +50,7 @@ public class LaptopActivity extends AppCompatActivity {
         priceString = formatText(price) + " G per";
         pricetag.setText(priceString);
 
+        final MediaPlayer anotherone = MediaPlayer.create(this, R.raw.afterupgrade2buy);
         Button buyone = findViewById(R.id.plus1);
         buyone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +63,10 @@ public class LaptopActivity extends AppCompatActivity {
                     editor.putLong("laptops", MainActivity.GlobalVars.numLaptops);
                     editor.apply();
                     MainActivity.GlobalVars.numLaptops++;
+                    if (MainActivity.GlobalVars.numLaptops > 1) {
+                        anotherone.start();
+                        anotherone.setVolume(1.0f, 1.0f);
+                    }
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);

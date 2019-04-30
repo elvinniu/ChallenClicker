@@ -3,6 +3,7 @@ package com.example.uhhhfinal;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -49,6 +50,7 @@ public class TutorActivity extends AppCompatActivity {
         priceString = formatText(price) + " G per";
         pricetag.setText(priceString);
 
+        final MediaPlayer anotherone = MediaPlayer.create(this, R.raw.afterupgrade2buy);
         Button buyone = findViewById(R.id.plus1);
         buyone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +63,10 @@ public class TutorActivity extends AppCompatActivity {
                     editor.putLong("tutors", MainActivity.GlobalVars.numTutors);
                     editor.apply();
                     MainActivity.GlobalVars.numTutors++;
+                    if (MainActivity.GlobalVars.numTutors > 1) {
+                        anotherone.start();
+                        anotherone.setVolume(1.0f, 1.0f);
+                    }
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
@@ -116,6 +122,7 @@ public class TutorActivity extends AppCompatActivity {
             }
         });
 
+        final MediaPlayer upgradeTutor1 = MediaPlayer.create(this, R.raw.tutorfirstupgrade);
         final FloatingActionButton upgrade1 = findViewById(R.id.csUpgrade);
         upgrade1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,10 +138,13 @@ public class TutorActivity extends AppCompatActivity {
                     Button rate = findViewById(R.id.rate);
                     priceString = formatText(MainActivity.GlobalVars.genTutors) + " G/s";
                     rate.setText(priceString);
+                    upgradeTutor1.start();
+                    upgradeTutor1.setVolume(1.0f, 1.0f);
                 }
             }
         });
 
+        final MediaPlayer upgradeTutor2 = MediaPlayer.create(this, R.raw.tutorsecondupgrade);
         final FloatingActionButton upgrade2 = findViewById(R.id.csUpgrade2);
         upgrade2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,6 +161,8 @@ public class TutorActivity extends AppCompatActivity {
                     Button rate = findViewById(R.id.rate);
                     priceString = formatText(MainActivity.GlobalVars.genTutors) + " G/s";
                     rate.setText(priceString);
+                    upgradeTutor2.start();
+                    upgradeTutor2.setVolume(1.0f, 1.0f);
                 }
             }
         });

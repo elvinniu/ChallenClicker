@@ -2,6 +2,7 @@ package com.example.uhhhfinal;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -58,11 +59,14 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        final MediaPlayer geoffTutor = MediaPlayer.create(this, R.raw.tutorpageopen);
         FloatingActionButton tutor = findViewById(R.id.tutorPage);
         tutor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MenuActivity.this, TutorActivity.class));
+                geoffTutor.start();
+                geoffTutor.setVolume(1.0f, 1.0f);
             }
         });
 
