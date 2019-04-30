@@ -1,5 +1,6 @@
 package com.example.uhhhfinal;
 
+import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -39,14 +40,21 @@ public class MainActivity extends AppCompatActivity {
     }
     public String geocounter = GlobalVars.globalChallen + " geoffs";
     public String startUpText = "What are you waiting for? Touch him!";
-    MediaPlayer geoffmusic;
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         timer.purge();
-        geoffmusic.stop();
-        geoffmusic.release();
+    }
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -63,10 +71,12 @@ public class MainActivity extends AppCompatActivity {
             GlobalVars.genBens = 100000000L;
         }
 
-        //startService(new Intent(this, MusicService.class));
+        if (!isMyServiceRunning(MusicService.class)) {
+            startService(new Intent(this, MusicService.class));
+        }
 
         final MediaPlayer geoffWelcome = MediaPlayer.create(this, R.raw.geoffsoundwelcome);
-        ImageButton button = (ImageButton) findViewById(R.id.geoff);
+        ImageButton button = findViewById(R.id.geoff);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (!GlobalVars.globalStarted) {
@@ -81,7 +91,9 @@ public class MainActivity extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MenuActivity.class));
+                if (GlobalVars.globalStarted) {
+                    startActivity(new Intent(MainActivity.this, MenuActivity.class));
+                }
             }
         });
 
@@ -115,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
                         editor.putLong("genBens", MainActivity.GlobalVars.genBens);
                         editor.apply();
                         updateText();
+                        if (!isMyServiceRunning(MusicService.class)) {
+                            startService(new Intent(MainActivity.this, MusicService.class));
+                        }
                     }
                 });
             }
@@ -139,17 +154,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
-        //geoffmusic.stop();
-        //geoffmusic.release();
-        if (geoffmusic != null){
-            geoffmusic.stop();
-            if (isFinishing()){
-                geoffmusic.stop();
-                geoffmusic.release();
-            }
-        }
-        timer.cancel();
+        timer.purge();
     }
 
     public void updateText() {
@@ -174,13 +179,9 @@ public class MainActivity extends AppCompatActivity {
         GlobalVars.genProgrammers = GlobalVars.pref.getLong("genProgrammers", 470L);
         GlobalVars.numBens = GlobalVars.pref.getLong("bens", 0L);
         GlobalVars.genBens = GlobalVars.pref.getLong("genBens", 100000000L);
-
-        //geocounter = GlobalVars.globalChallen + " geoffs";
-
-        TextView startUp = (TextView) findViewById(R.id.startUp);
-        TextView counter = (TextView) findViewById(R.id.gcounter);
+        TextView startUp = findViewById(R.id.startUp);
+        TextView counter = findViewById(R.id.gcounter);
         startUp.setText(startUpText);
-        //counter.setText(geocounter);
         updateText();
         if (GlobalVars.globalStarted) {
             startUp.setVisibility(View.GONE);
@@ -191,9 +192,7 @@ public class MainActivity extends AppCompatActivity {
         if (!GlobalVars.globalStarted) {
             updateSecond();
         }
-
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
-
     }
 
     public void formatText() {
