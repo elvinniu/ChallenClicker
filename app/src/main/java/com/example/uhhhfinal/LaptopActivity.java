@@ -51,6 +51,8 @@ public class LaptopActivity extends AppCompatActivity {
         pricetag.setText(priceString);
 
         final MediaPlayer anotherone = MediaPlayer.create(this, R.raw.afterupgrade2buy);
+        final MediaPlayer catcall = MediaPlayer.create(this, R.raw.catcall);
+        final MediaPlayer hax = MediaPlayer.create(this, R.raw.hax);
         Button buyone = findViewById(R.id.plus1);
         buyone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +91,8 @@ public class LaptopActivity extends AppCompatActivity {
                     editor.putLong("laptops", MainActivity.GlobalVars.numLaptops);
                     editor.apply();
                     MainActivity.GlobalVars.numLaptops += 10;
+                    catcall.start();
+                    catcall.setVolume(1.0f, 1.0f);
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
@@ -111,6 +115,8 @@ public class LaptopActivity extends AppCompatActivity {
                     editor.putLong("laptops", MainActivity.GlobalVars.numLaptops);
                     editor.apply();
                     MainActivity.GlobalVars.numLaptops += 100;
+                    hax.start();
+                    hax.setVolume(1.0f, 1.0f);
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);

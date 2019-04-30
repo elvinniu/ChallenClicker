@@ -52,6 +52,8 @@ public class StudentActivity extends AppCompatActivity {
         pricetag.setText(priceString);
 
         final MediaPlayer anotherone = MediaPlayer.create(this, R.raw.afterupgrade2buy);
+        final MediaPlayer catcall = MediaPlayer.create(this, R.raw.catcall);
+        final MediaPlayer hax = MediaPlayer.create(this, R.raw.hax);
         Button buyone = findViewById(R.id.plus1);
         buyone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +92,8 @@ public class StudentActivity extends AppCompatActivity {
                     editor.putLong("students", MainActivity.GlobalVars.numStudents);
                     editor.apply();
                     MainActivity.GlobalVars.numStudents += 10;
+                    catcall.start();
+                    catcall.setVolume(1.0f, 1.0f);
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
@@ -112,6 +116,8 @@ public class StudentActivity extends AppCompatActivity {
                     editor.putLong("students", MainActivity.GlobalVars.numStudents);
                     editor.apply();
                     MainActivity.GlobalVars.numStudents += 100;
+                    hax.start();
+                    hax.setVolume(1.0f, 1.0f);
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
