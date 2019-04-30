@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        timer.cancel();
+        timer.purge();
         geoffmusic.stop();
         geoffmusic.release();
     }
@@ -137,31 +137,15 @@ public class MainActivity extends AppCompatActivity {
     };
 
     @Override
-    public void onBackPressed() {
-        if (timerTask != null) {
-            timerTask.cancel();
-            timerTask = null;
-        }
-        if (timer != null) {
-            timer.cancel();
-            timer = null;
-        }
-        super.onBackPressed();
-    }
-
-    @Override
     protected void onPause() {
         super.onPause();
 
         //geoffmusic.stop();
         //geoffmusic.release();
-        timer.cancel();
+        timer.purge();
     }
 
     public void updateText() {
-
-        geoffmusic = MediaPlayer.create(this, R.raw.track13_theverve);
-
         TextView counter = findViewById(R.id.gcounter);
         formatText();
         counter.setText(geocounter);
@@ -200,7 +184,9 @@ public class MainActivity extends AppCompatActivity {
         if (!GlobalVars.globalStarted) {
             updateSecond();
         }
+
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
+
     }
 
     public void formatText() {
