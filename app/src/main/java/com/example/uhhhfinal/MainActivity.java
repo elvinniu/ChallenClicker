@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             GlobalVars.genBens = 100000000L;
         }
 
-        startService(new Intent(this, MusicService.class));
+        //startService(new Intent(this, MusicService.class));
 
         final MediaPlayer geoffWelcome = MediaPlayer.create(this, R.raw.geoffsoundwelcome);
         ImageButton button = (ImageButton) findViewById(R.id.geoff);
@@ -142,7 +142,14 @@ public class MainActivity extends AppCompatActivity {
 
         //geoffmusic.stop();
         //geoffmusic.release();
-        timer.purge();
+        if (geoffmusic != null){
+            geoffmusic.stop();
+            if (isFinishing()){
+                geoffmusic.stop();
+                geoffmusic.release();
+            }
+        }
+        timer.cancel();
     }
 
     public void updateText() {
