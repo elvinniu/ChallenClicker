@@ -73,7 +73,7 @@ public class MusicService extends Service {
             geoffmusic = MediaPlayer.create(this, R.raw.mountainking_1s);
         }
         geoffmusic.start();
-        geoffmusic.setVolume(0.1f,0.1f);
+        geoffmusic.setVolume(0.3f,0.3f);
         geoffmusic.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
