@@ -91,9 +91,7 @@ public class MainActivity extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (GlobalVars.globalStarted) {
-                    startActivity(new Intent(MainActivity.this, MenuActivity.class));
-                }
+                startActivity(new Intent(MainActivity.this, MenuActivity.class));
             }
         });
 
