@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -50,11 +51,13 @@ public class StudentActivity extends AppCompatActivity {
         priceString = formatText(price) + " G per";
         pricetag.setText(priceString);
 
+        final MediaPlayer anotherone = MediaPlayer.create(this, R.raw.afterupgrade2buy);
+        final MediaPlayer catcall = MediaPlayer.create(this, R.raw.catcall);
+        final MediaPlayer hax = MediaPlayer.create(this, R.raw.hax);
         Button buyone = findViewById(R.id.plus1);
         buyone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(price);
                 if (MainActivity.GlobalVars.globalChallen >= price) {
                     MainActivity.GlobalVars.globalChallen -= price;
                     SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
@@ -62,6 +65,10 @@ public class StudentActivity extends AppCompatActivity {
                     editor.putLong("students", MainActivity.GlobalVars.numStudents);
                     editor.apply();
                     MainActivity.GlobalVars.numStudents++;
+                    if (MainActivity.GlobalVars.numStudents > 1 && !MainActivity.GlobalVars.soundMute) {
+                        anotherone.start();
+                        anotherone.setVolume(1.0f, 1.0f);
+                    }
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
@@ -84,6 +91,10 @@ public class StudentActivity extends AppCompatActivity {
                     editor.putLong("students", MainActivity.GlobalVars.numStudents);
                     editor.apply();
                     MainActivity.GlobalVars.numStudents += 10;
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        catcall.start();
+                        catcall.setVolume(1.0f, 1.0f);
+                    }
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
@@ -106,6 +117,10 @@ public class StudentActivity extends AppCompatActivity {
                     editor.putLong("students", MainActivity.GlobalVars.numStudents);
                     editor.apply();
                     MainActivity.GlobalVars.numStudents += 100;
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        hax.start();
+                        hax.setVolume(1.0f, 1.0f);
+                    }
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
@@ -117,6 +132,7 @@ public class StudentActivity extends AppCompatActivity {
             }
         });
 
+        final MediaPlayer upgradeStudent1 = MediaPlayer.create(this, R.raw.studentupgrade1);
         final FloatingActionButton upgrade1 = findViewById(R.id.csUpgrade);
         upgrade1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,10 +145,18 @@ public class StudentActivity extends AppCompatActivity {
                     editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
                     editor.putLong("genStudents", MainActivity.GlobalVars.genStudents);
                     editor.apply();
+                    Button rate = findViewById(R.id.rate);
+                    priceString = formatText(MainActivity.GlobalVars.genStudents) + " G/s";
+                    rate.setText(priceString);
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        upgradeStudent1.start();
+                        upgradeStudent1.setVolume(1.0f,1.0f);
+                    }
                 }
             }
         });
 
+        final MediaPlayer upgradeStudent2 = MediaPlayer.create(this, R.raw.geoffsoundwelcome);
         final FloatingActionButton upgrade2 = findViewById(R.id.csUpgrade2);
         upgrade2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +170,13 @@ public class StudentActivity extends AppCompatActivity {
                     editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
                     editor.putLong("genStudents", MainActivity.GlobalVars.genStudents);
                     editor.apply();
+                    Button rate = findViewById(R.id.rate);
+                    priceString = formatText(MainActivity.GlobalVars.genStudents) + " G/s";
+                    rate.setText(priceString);
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        upgradeStudent2.start();
+                        upgradeStudent2.setVolume(1.0f,1.0f);
+                    }
                 }
             }
         });
@@ -236,6 +267,9 @@ public class StudentActivity extends AppCompatActivity {
         Button pricetag = findViewById(R.id.pricetag);
         priceString = formatText(price) + " G per";
         pricetag.setText(priceString);
+        Button rate = findViewById(R.id.rate);
+        priceString = formatText(MainActivity.GlobalVars.genStudents) + " G/s";
+        rate.setText(priceString);
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 

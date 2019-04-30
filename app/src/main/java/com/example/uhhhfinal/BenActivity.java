@@ -2,6 +2,7 @@ package com.example.uhhhfinal;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -48,11 +49,13 @@ public class BenActivity extends AppCompatActivity {
         priceString = formatText(price) + " G per";
         pricetag.setText(priceString);
 
+        final MediaPlayer anotherone = MediaPlayer.create(this, R.raw.afterupgrade2buy);
+        final MediaPlayer catcall = MediaPlayer.create(this, R.raw.catcall);
+        final MediaPlayer hax = MediaPlayer.create(this, R.raw.hax);
         Button buyone = findViewById(R.id.plus1);
         buyone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(price);
                 if (MainActivity.GlobalVars.globalChallen >= price) {
                     MainActivity.GlobalVars.globalChallen -= price;
                     SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
@@ -60,6 +63,10 @@ public class BenActivity extends AppCompatActivity {
                     editor.putLong("bens", MainActivity.GlobalVars.numBens);
                     editor.apply();
                     MainActivity.GlobalVars.numBens++;
+                    if (MainActivity.GlobalVars.numBens > 1 && !MainActivity.GlobalVars.soundMute) {
+                        anotherone.start();
+                        anotherone.setVolume(1.0f, 1.0f);
+                    }
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
@@ -83,6 +90,10 @@ public class BenActivity extends AppCompatActivity {
                     editor.putLong("bens", MainActivity.GlobalVars.numBens);
                     editor.apply();
                     MainActivity.GlobalVars.numBens += 10;
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        catcall.start();
+                        catcall.setVolume(1.0f, 1.0f);
+                    }
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
@@ -105,6 +116,10 @@ public class BenActivity extends AppCompatActivity {
                     editor.putLong("bens", MainActivity.GlobalVars.numBens);
                     editor.apply();
                     MainActivity.GlobalVars.numBens += 100;
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        hax.start();
+                        hax.setVolume(1.0f, 1.0f);
+                    }
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
