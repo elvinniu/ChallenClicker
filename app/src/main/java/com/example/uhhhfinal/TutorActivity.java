@@ -2,6 +2,7 @@ package com.example.uhhhfinal;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -114,6 +115,39 @@ public class TutorActivity extends AppCompatActivity {
                 pricetag.setText(priceString);
             }
         });
+
+        final FloatingActionButton upgrade1 = findViewById(R.id.csUpgrade);
+        upgrade1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (MainActivity.GlobalVars.globalChallen >= 93500000L && MainActivity.GlobalVars.genTutors < 800L) {
+                    MainActivity.GlobalVars.globalChallen -= 93500000L;
+                    MainActivity.GlobalVars.genTutors = 800L;
+                    upgrade1.setBackgroundTintList(ColorStateList.valueOf(0xFF00FF00));
+                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                    editor.putLong("genTutors", MainActivity.GlobalVars.genTutors);
+                    editor.apply();
+                }
+            }
+        });
+
+        final FloatingActionButton upgrade2 = findViewById(R.id.csUpgrade2);
+        upgrade2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (MainActivity.GlobalVars.globalChallen >= 181500000000L && MainActivity.GlobalVars.genTutors < 800000L) {
+                    MainActivity.GlobalVars.globalChallen -= 181500000000L;
+                    MainActivity.GlobalVars.genTutors = 800000L;
+                    upgrade1.setBackgroundTintList(ColorStateList.valueOf(0xFF00FF00));
+                    upgrade2.setBackgroundTintList(ColorStateList.valueOf(0xFF00FF00));
+                    SharedPreferences.Editor editor = MainActivity.GlobalVars.pref.edit();
+                    editor.putLong("challens", MainActivity.GlobalVars.globalChallen);
+                    editor.putLong("genTutors", MainActivity.GlobalVars.genTutors);
+                    editor.apply();
+                }
+            }
+        });
     }
 
     final Handler handler = new Handler();
@@ -188,6 +222,16 @@ public class TutorActivity extends AppCompatActivity {
         geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
         currentGeoffs.setText(geoffCounter);
         updatePrice();
+
+        if (MainActivity.GlobalVars.genTutors >= 800L) {
+            FloatingActionButton upgrade1 = findViewById(R.id.csUpgrade);
+            upgrade1.setBackgroundTintList(ColorStateList.valueOf(0xFF00FF00));
+            if (MainActivity.GlobalVars.genTutors >= 800000L) {
+                FloatingActionButton upgrade2 = findViewById(R.id.csUpgrade2);
+                upgrade2.setBackgroundTintList(ColorStateList.valueOf(0xFF00FF00));
+            }
+        }
+
         Button pricetag = findViewById(R.id.pricetag);
         priceString = formatText(price) + " G per";
         pricetag.setText(priceString);

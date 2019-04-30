@@ -137,7 +137,7 @@ public class StudentActivity extends AppCompatActivity {
         upgrade2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MainActivity.GlobalVars.globalChallen >= 100000000L && MainActivity.GlobalVars.genStudents < 100000000L) {
+                if (MainActivity.GlobalVars.globalChallen >= 100000000L && MainActivity.GlobalVars.genStudents < 10000L) {
                     MainActivity.GlobalVars.globalChallen -= 100000000L;
                     MainActivity.GlobalVars.genStudents = 10000L;
                     upgrade1.setBackgroundTintList(ColorStateList.valueOf(0xFF00FF00));
@@ -223,6 +223,16 @@ public class StudentActivity extends AppCompatActivity {
         geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
         currentGeoffs.setText(geoffCounter);
         updatePrice();
+
+        if (MainActivity.GlobalVars.genStudents >= 10L) {
+            FloatingActionButton upgrade1 = findViewById(R.id.csUpgrade);
+            upgrade1.setBackgroundTintList(ColorStateList.valueOf(0xFF00FF00));
+            if (MainActivity.GlobalVars.genStudents >= 10000L) {
+                FloatingActionButton upgrade2 = findViewById(R.id.csUpgrade2);
+                upgrade2.setBackgroundTintList(ColorStateList.valueOf(0xFF00FF00));
+            }
+        }
+
         Button pricetag = findViewById(R.id.pricetag);
         priceString = formatText(price) + " G per";
         pricetag.setText(priceString);
