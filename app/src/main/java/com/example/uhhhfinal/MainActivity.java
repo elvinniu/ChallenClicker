@@ -137,6 +137,19 @@ public class MainActivity extends AppCompatActivity {
     };
 
     @Override
+    public void onBackPressed() {
+        if (timerTask != null) {
+            timerTask.cancel();
+            timerTask = null;
+        }
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
+        }
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
 
@@ -146,15 +159,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateText() {
-        /*
+
         geoffmusic = MediaPlayer.create(this, R.raw.track13_theverve);
-        if (!geoffmusic.isPlaying()) {
-            geoffmusic.start();
-        } else {
-            geoffmusic.stop();
-            geoffmusic.release();
-        }
-*/
+
         TextView counter = findViewById(R.id.gcounter);
         formatText();
         counter.setText(geocounter);
