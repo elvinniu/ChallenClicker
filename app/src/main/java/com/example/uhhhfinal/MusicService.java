@@ -18,9 +18,9 @@ public class MusicService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        geoffmusic = MediaPlayer.create(this, R.raw.figleaf_1);
+        geoffmusic = MediaPlayer.create(this, R.raw.weaselboi);
         if (MainActivity.GlobalVars.globalChallen < 1000L && MainActivity.GlobalVars.globalChallen >= 1) {
-            geoffmusic = MediaPlayer.create(this, R.raw.figleaf_1);
+            geoffmusic = MediaPlayer.create(this, R.raw.weaselboi);
         }
         if (MainActivity.GlobalVars.globalChallen < 10000L && MainActivity.GlobalVars.globalChallen >= 1000L) {
             geoffmusic = MediaPlayer.create(this, R.raw.monkey_1k);
