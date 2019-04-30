@@ -64,7 +64,7 @@ public class BenActivity extends AppCompatActivity {
                     editor.putLong("bens", MainActivity.GlobalVars.numBens);
                     editor.apply();
                     MainActivity.GlobalVars.numBens++;
-                    if (MainActivity.GlobalVars.numBens > 1) {
+                    if (MainActivity.GlobalVars.numBens > 1 && !MainActivity.GlobalVars.soundMute) {
                         anotherone.start();
                         anotherone.setVolume(1.0f, 1.0f);
                     }
@@ -91,8 +91,10 @@ public class BenActivity extends AppCompatActivity {
                     editor.putLong("bens", MainActivity.GlobalVars.numBens);
                     editor.apply();
                     MainActivity.GlobalVars.numBens += 10;
-                    catcall.start();
-                    catcall.setVolume(1.0f, 1.0f);
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        catcall.start();
+                        catcall.setVolume(1.0f, 1.0f);
+                    }
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
@@ -115,8 +117,10 @@ public class BenActivity extends AppCompatActivity {
                     editor.putLong("bens", MainActivity.GlobalVars.numBens);
                     editor.apply();
                     MainActivity.GlobalVars.numBens += 100;
-                    hax.start();
-                    hax.setVolume(1.0f, 1.0f);
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        hax.start();
+                        hax.setVolume(1.0f, 1.0f);
+                    }
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);

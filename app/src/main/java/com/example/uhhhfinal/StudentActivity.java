@@ -66,7 +66,7 @@ public class StudentActivity extends AppCompatActivity {
                     editor.putLong("students", MainActivity.GlobalVars.numStudents);
                     editor.apply();
                     MainActivity.GlobalVars.numStudents++;
-                    if (MainActivity.GlobalVars.numStudents > 1) {
+                    if (MainActivity.GlobalVars.numStudents > 1 && !MainActivity.GlobalVars.soundMute) {
                         anotherone.start();
                         anotherone.setVolume(1.0f, 1.0f);
                     }
@@ -92,8 +92,10 @@ public class StudentActivity extends AppCompatActivity {
                     editor.putLong("students", MainActivity.GlobalVars.numStudents);
                     editor.apply();
                     MainActivity.GlobalVars.numStudents += 10;
-                    catcall.start();
-                    catcall.setVolume(1.0f, 1.0f);
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        catcall.start();
+                        catcall.setVolume(1.0f, 1.0f);
+                    }
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
@@ -116,8 +118,10 @@ public class StudentActivity extends AppCompatActivity {
                     editor.putLong("students", MainActivity.GlobalVars.numStudents);
                     editor.apply();
                     MainActivity.GlobalVars.numStudents += 100;
-                    hax.start();
-                    hax.setVolume(1.0f, 1.0f);
+                    if (!MainActivity.GlobalVars.soundMute) {
+                        hax.start();
+                        hax.setVolume(1.0f, 1.0f);
+                    }
                 }
                 TextView currentGeoffs = findViewById(R.id.currency);
                 geoffCounter = formatText(MainActivity.GlobalVars.globalChallen);
