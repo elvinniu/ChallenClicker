@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!GlobalVars.globalStarted) {
                     geoffWelcome.start();
+                    geoffWelcome.setVolume(1.0f,1.0f);
                     GlobalVars.globalStarted = true;
                 }
                 clickGeoff();
