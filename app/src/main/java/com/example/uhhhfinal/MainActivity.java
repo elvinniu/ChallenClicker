@@ -86,8 +86,10 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (!GlobalVars.globalStarted) {
-                    geoffWelcome.start();
-                    geoffWelcome.setVolume(1.0f,1.0f);
+                    if (!GlobalVars.soundMute) {
+                        geoffWelcome.start();
+                        geoffWelcome.setVolume(1.0f,1.0f);
+                    }
                     GlobalVars.globalStarted = true;
                 }
                 clickGeoff();
