@@ -269,6 +269,18 @@ public class ProgrammerActivity extends AppCompatActivity {
         Button rate = findViewById(R.id.rate);
         priceString = formatText(MainActivity.GlobalVars.genProgrammers) + " G/s";
         rate.setText(priceString);
+        Timer timer = new Timer(false);
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateText();
+                    }
+                });
+            }
+        };
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 

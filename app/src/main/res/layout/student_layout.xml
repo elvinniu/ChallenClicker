@@ -187,7 +187,7 @@
 
     <TextView
         android:id="@+id/currency"
-        android:layout_width="64dp"
+        android:layout_width="72dp"
         android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"

@@ -25,7 +25,7 @@ public class LaptopActivity extends AppCompatActivity {
     private String priceString = price + "G per";
 
     protected void updatePrice() {
-        price = Math.round(1000*(Math.pow(1.15, MainActivity.GlobalVars.numLaptops)));
+        price = Math.round(1000 * (Math.pow(1.15, MainActivity.GlobalVars.numLaptops)));
         priceten = Math.round(price * 20.303718238);
         pricehundred = Math.round(price * 7828749.671335256);
     }
@@ -269,6 +269,18 @@ public class LaptopActivity extends AppCompatActivity {
         Button rate = findViewById(R.id.rate);
         priceString = formatText(MainActivity.GlobalVars.genLaptops) + " G/s";
         rate.setText(priceString);
+        Timer timer = new Timer(false);
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateText();
+                    }
+                });
+            }
+        };
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 

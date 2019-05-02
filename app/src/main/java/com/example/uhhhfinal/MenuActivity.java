@@ -165,6 +165,18 @@ public class MenuActivity extends AppCompatActivity {
         TextView currentGeoffs = findViewById(R.id.currency);
         formatText();
         currentGeoffs.setText(geoffCounter);
+        Timer timer = new Timer(false);
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateText();
+                    }
+                });
+            }
+        };
         timer.schedule(timerTask, 1000, 1000); // 1000 = 1 second.
     }
 

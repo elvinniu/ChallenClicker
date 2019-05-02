@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
         GlobalVars.genLaptops = GlobalVars.pref.getLong("genLaptops", 10L);
         GlobalVars.numTutors = GlobalVars.pref.getLong("tutors", 0L);
         GlobalVars.genTutors = GlobalVars.pref.getLong("genTutors", 80L);
-        GlobalVars.numProgrammers = GlobalVars.pref.getLong("progammers", 0L);
+        GlobalVars.numProgrammers = GlobalVars.pref.getLong("programmers", 0L);
         GlobalVars.genProgrammers = GlobalVars.pref.getLong("genProgrammers", 470L);
         GlobalVars.numBens = GlobalVars.pref.getLong("bens", 0L);
         GlobalVars.genBens = GlobalVars.pref.getLong("genBens", 100000000L);
@@ -200,6 +200,18 @@ public class MainActivity extends AppCompatActivity {
         if (!GlobalVars.globalStarted) {
             updateSecond();
         }
+        Timer bimer = new Timer(false);
+        TimerTask bimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateText();
+                    }
+                });
+            }
+        };
         bimer.schedule(bimerTask, 1000, 1000); // 1000 = 1 second.
     }
 
