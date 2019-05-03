@@ -39,7 +39,7 @@ public class MusicService extends Service {
         }
         if (MainActivity.GlobalVars.globalChallen < 10000000L && MainActivity.GlobalVars.globalChallen >= 1000000L) {
             geoffmusic = MediaPlayer.create(this, R.raw.thecannery_1m);
-            geoffmusic.setVolume(0.05f,0.05f);
+            geoffmusic.setVolume(0.1f,0.1f);
         }
         if (MainActivity.GlobalVars.globalChallen < 100000000L && MainActivity.GlobalVars.globalChallen >= 10000000L) {
             geoffmusic = MediaPlayer.create(this, R.raw.thedescent_10m);
